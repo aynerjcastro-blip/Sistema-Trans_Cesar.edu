@@ -4,14 +4,14 @@ import java.util.Scanner;
 
 public class Main {
 
-    static Scanner sc = new Scanner(System.in);
+    static Scanner consola = new Scanner(System.in);
 
     public static void main(String[] args) {
         int opcion;
         do {
             mostrarMenu();
-            opcion = sc.nextInt();
-            sc.nextLine();
+            opcion = consola.nextInt();
+            consola.nextLine();
             switch (opcion) {
                 case 1: registrarVehiculo(); break;
                 case 2: listarVehiculos(); break;
@@ -38,10 +38,32 @@ public class Main {
     }
 
     // TODO: Actividad 3
-    static void registrarVehiculo() {}
+    static void registrarVehiculo() {
+        System.out.println("\n**Registrar vehiculo**");
+        System.out.println("""
+                Tipo:
+                1. Buseta
+                2. MicroBus
+                3. Bus
+                """);
+        var tipo = Integer.parseInt(consola.nextLine());
+        
+        System.out.println("Placa: ");
+        var placa = consola.nextLine();
+
+        System.out.println("Ruta: ");
+        var estado = Integer.parseInt(consola.nextLine());
+
+        //TODO: VehiculoService.registrar(tipo,placa,estado);
+
+    }
 
     // TODO: Actividad 3
-    static void listarVehiculos() {}
+    static void listarVehiculos() {
+        System.out.println("\n** Listar Vehiculos **");
+        //TODO: VehiculoService.listar();
+        System.out.println("pendiente a integracion con service");
+    }
 
     // TODO: Actividad 4
     static void registrarConductor() {}
