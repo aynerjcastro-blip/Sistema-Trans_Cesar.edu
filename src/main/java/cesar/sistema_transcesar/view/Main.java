@@ -146,13 +146,33 @@ public class Main {
     }
     static void listarPasajeros(){
         System.out.println("\n ** Lista de Pasajeros **");
-        //TODO: PersonaService.listarPasajeros();
+        System.out.println("pendiente a integracion con service");
     }
 
-    // TODO: Actividad 6
+    
     static void venderTicket() {
+        System.out.println("\n ** Vender Ticket **");
 
+        System.out.println("Identificacion de pasajero: ");
+        var identificacion = consola.nextLine();
+
+        System.out.println("Placa del vehiculo: ");
+        var placa = consola.nextLine();
+
+        System.out.println("Seleccione una ruta disponible: ");
+        //TODO: mostrar lista de rutas disponibles desde service
+
+        System.out.println("Codigo de la ruta: ");
+        var codigoRuta = consola.nextLine();
+        try {
+            //TODO: TicketService.venderTicket(identificacion,placa,ruta,codigoRuta)
+            System.out.println("Ticket vendido correctamente: ");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: "+e.getMessage());
+            e.printStackTrace();
+        }
     }
+    
 
     // TODO: Actividad 12
     static void verEstadisticas() {}
