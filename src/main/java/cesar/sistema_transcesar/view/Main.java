@@ -17,7 +17,7 @@ public class Main {
                 case 1: registrarVehiculo(); break;
                 case 2: listarVehiculos(); break;
                 case 3: registrarConductor(); break;
-                case 4: registrarPasajero(); break;
+                case 4: listarConductores(); break;
                 case 5: venderTicket(); break;
                 case 6: verEstadisticas(); break;
                 case 0: System.out.println("Saliendo del sistema..."); break;
@@ -73,11 +73,45 @@ public class Main {
     }
 
     // TODO: Actividad 4
-    static void registrarConductor() {}
+    static void registrarConductor() {
+        System.out.println("\n** Registrar conductor **");
+        try{
+            System.out.println("Cedula: ");
+            var cedula = consola.nextLine();
 
-    // TODO: Actividad 5
-    static void registrarPasajero() {}
+            System.out.println("Nombre: ");
+            var nombre = consola.nextLine();
 
+            System.out.println("Numero de Licencia: ");
+            var numeroDeLicencia = consola.nextLine();
+
+            System.out.println("""
+                Categoria: 
+                1. B1
+                2. B2
+                3. C1
+                4. C2
+                Seleccione categoria:
+                """);
+                var categoria = Integer.parseInt(consola.nextLine());
+
+                //TODO: PersonaService.registrarConductor(cedula,nombre,numeroDeLicencia,categoria):
+        }catch(IllegalArgumentException e){
+            System.out.println("Error: "+e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    // TODO: Actividad 4
+    static void listarConductores() {
+        System.out.println("\n ** Listar Conductores **");
+
+    }
+
+    //TODO: Actividad 5
+    static void registrarPasajero(){}
+    static void listarPasajeros(){}
+    
     // TODO: Actividad 6
     static void venderTicket() {}
 
