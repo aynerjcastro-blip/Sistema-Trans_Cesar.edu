@@ -107,17 +107,46 @@ public class Main {
 
 
     static void listarConductores() {
-        System.out.println("\n ** Listar Conductores * *");
+        System.out.println("\n ** Listar Conductores **");
         //TODO: PersonaService.listarConductores()
         System.out.println("(pendiente a integracion con service)");
     }
 
     
     static void registrarPasajero(){
+        System.out.println("\n **Registrar Pasajeros **");
+        try{
+            
+        
+        System.out.println("Identificacion: ");
+        var identificacion = consola.nextLine();
 
+        System.out.println("Nombre: ");
+        var nombre = consola.nextLine();
+
+        System.out.println("Fecha de Nacimiento: (dd/mm/aaaa/): ");
+        var fechaNacimiento = consola.nextLine();
+
+        System.out.println("""
+                Tipo:
+                1. Regular
+                2. Estudiante
+                Seleccione tipo: 
+                """);
+                var tipo = Integer.parseInt(consola.nextLine());
+
+                //TODO: PersonaService.registrarPasajero(cedula,nombre,fechaNacimiento,tipo)
+                }catch(IllegalArgumentException e){
+                    System.out.println("Error: "+e.getMessage());
+                    e.printStackTrace();
+                }catch(DateTimeParseException e){
+                    System.out.println("Error: formato de fercha valido. Use dd/mm/yyyy"+e.getMessage());
+                    e.printStackTrace();
+                }
     }
     static void listarPasajeros(){
-
+        System.out.println("\n ** Lista de Pasajeros **");
+        //TODO: PersonaService.listarPasajeros();
     }
 
     // TODO: Actividad 6
