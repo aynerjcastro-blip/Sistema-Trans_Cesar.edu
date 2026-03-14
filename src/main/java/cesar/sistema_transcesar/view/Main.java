@@ -41,7 +41,7 @@ public class Main {
         System.out.print("Selecciona una opcion: ");
     }
 
-    // TODO: Actividad 3
+
     static void registrarVehiculo() {
         System.out.println("\n**Registrar vehiculo**");
         System.out.println("""
@@ -68,14 +68,14 @@ public class Main {
                 }
     }
 
-    // TODO: Actividad 3
+    
     static void listarVehiculos() {
         System.out.println("\n** Listar Vehiculos **");
         //TODO: VehiculoService.listar();
         System.out.println("pendiente a integracion con service");
     }
 
-    // TODO: Actividad 4
+    
     static void registrarConductor() {
         System.out.println("\n** Registrar conductor **");
         try{
@@ -84,9 +84,6 @@ public class Main {
 
             System.out.println("Nombre: ");
             var nombre = consola.nextLine();
-
-            System.out.println("Fecha de nacimiento: ");
-            var fechaNacimiento = consola.nextLine();
 
             System.out.println("Numero de Licencia: ");
             var numeroDeLicencia = consola.nextLine();
@@ -105,25 +102,28 @@ public class Main {
         }catch(IllegalArgumentException e){
             System.out.println("Error: "+e.getMessage());
             e.printStackTrace();
-        }catch(DateTimeParseException e){
-            System.out.println("Error: formato de fecha invalido. Use dd/MM/yyyy"+e.getMessage());
-            e.printStackTrace();
         }
     }
 
-    // TODO: Actividad 4
+
     static void listarConductores() {
         System.out.println("\n ** Listar Conductores * *");
         //TODO: PersonaService.listarConductores()
         System.out.println("(pendiente a integracion con service)");
     }
 
-    //TODO: Actividad 5
-    static void registrarPasajero(){}
-    static void listarPasajeros(){}
+    
+    static void registrarPasajero(){
+
+    }
+    static void listarPasajeros(){
+
+    }
 
     // TODO: Actividad 6
-    static void venderTicket() {}
+    static void venderTicket() {
+
+    }
 
     // TODO: Actividad 12
     static void verEstadisticas() {}
