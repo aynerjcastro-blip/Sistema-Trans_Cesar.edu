@@ -1,5 +1,6 @@
 package cesar.sistema_transcesar.view;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -46,16 +47,22 @@ public class Main {
                 2. MicroBus
                 3. Bus
                 """);
-        var tipo = Integer.parseInt(consola.nextLine());
+                try{
+                    var tipo = Integer.parseInt(consola.nextLine());
         
-        System.out.println("Placa: ");
-        var placa = consola.nextLine();
+                    System.out.println("Placa: ");
+                    var placa = consola.nextLine();
 
-        System.out.println("Ruta: ");
-        var estado = Integer.parseInt(consola.nextLine());
-
-        //TODO: VehiculoService.registrar(tipo,placa,estado);
-
+                    System.out.println("Ruta: ");
+                    var estado = Integer.parseInt(consola.nextLine());
+                    //TODO: VehiculoService.registrar(tipo,placa,estado
+                }catch(InputMismatchException e){
+                    System.out.println("Error: Debe ingresar un numero valido."+e.getMessage());
+                    e.printStackTrace();
+                }catch(IllegalArgumentException e){
+                    System.out.println("Error: "+e.getMessage());
+                    e.printStackTrace();
+                }
     }
 
     // TODO: Actividad 3
