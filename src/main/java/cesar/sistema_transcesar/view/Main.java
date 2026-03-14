@@ -1,5 +1,6 @@
 package cesar.sistema_transcesar.view;
 
+import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -18,8 +19,10 @@ public class Main {
                 case 2: listarVehiculos(); break;
                 case 3: registrarConductor(); break;
                 case 4: listarConductores(); break;
-                case 5: venderTicket(); break;
-                case 6: verEstadisticas(); break;
+                case 5: registrarPasajero();break;
+                case 6: listarPasajeros();break;
+                case 7: venderTicket(); break;
+                case 8: verEstadisticas(); break;
                 case 0: System.out.println("Saliendo del sistema..."); break;
                 default: System.out.println("Opcion no valida.");
             }
@@ -82,6 +85,9 @@ public class Main {
             System.out.println("Nombre: ");
             var nombre = consola.nextLine();
 
+            System.out.println("Fecha de nacimiento: ");
+            var fechaNacimiento = consola.nextLine();
+
             System.out.println("Numero de Licencia: ");
             var numeroDeLicencia = consola.nextLine();
 
@@ -95,23 +101,27 @@ public class Main {
                 """);
                 var categoria = Integer.parseInt(consola.nextLine());
 
-                //TODO: PersonaService.registrarConductor(cedula,nombre,numeroDeLicencia,categoria):
+                //TODO: PersonaService.registrarConductor(cedula,nombre,fechaNacimiento,numeroDeLicencia,categoria)
         }catch(IllegalArgumentException e){
             System.out.println("Error: "+e.getMessage());
+            e.printStackTrace();
+        }catch(DateTimeParseException e){
+            System.out.println("Error: formato de fecha invalido. Use dd/MM/yyyy"+e.getMessage());
             e.printStackTrace();
         }
     }
 
     // TODO: Actividad 4
     static void listarConductores() {
-        System.out.println("\n ** Listar Conductores **");
-
+        System.out.println("\n ** Listar Conductores * *");
+        //TODO: PersonaService.listarConductores()
+        System.out.println("(pendiente a integracion con service)");
     }
 
     //TODO: Actividad 5
     static void registrarPasajero(){}
     static void listarPasajeros(){}
-    
+
     // TODO: Actividad 6
     static void venderTicket() {}
 
