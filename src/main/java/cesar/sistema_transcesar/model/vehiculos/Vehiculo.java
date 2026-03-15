@@ -73,12 +73,12 @@ public abstract class Vehiculo implements Imprimible {
 
     @Override
     public void imprimirDetalle(){
-        System.out.println("Placa: " + placa
-        + "Ruta: " + ruta
-        + "Capacidad Maxima: " + capacidadMaxima
-        + "Pasajeros Actuales: " + pasajerosActuales
-        + "Cupos disponibles: " + getCuposDisponibles()
-        + "Tarifa Base: " + tarifaBase
-        + "Disponible: " + disponible);
+        System.out.println("\nPlaca: " + placa
+        + "\nRuta: " + ruta
+        + "\nCapacidad Maxima: " + capacidadMaxima
+        + "\nPasajeros Actuales: " + pasajerosActuales
+        + "\nCupos disponibles: " + getCuposDisponibles()
+        + "\nTarifa Base: " + tarifaBase
+        + "\nDisponible: " + disponible);
     }
 }
