@@ -11,6 +11,9 @@ public abstract class Persona implements Imprimible {
         this.nombre = nombre;
     }
 
+    public Persona(){
+        
+    }
     public String getCedula() {
         return cedula;
     }
