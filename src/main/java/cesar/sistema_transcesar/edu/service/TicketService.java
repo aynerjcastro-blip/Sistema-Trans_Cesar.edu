@@ -17,6 +17,12 @@ public class TicketService {
     }
 
     public boolean venderTicket(Ticket t) {
+        if (!puedeComprar(t.getPasajero().getCedula(), t.getFechaViaje())) {
+            int count = contarTicketsPorPasajeroPorDia(t.getPasajero().getCedula(), t.getFechaViaje());
+            System.out.println("El pasajero ya tiene " + count + " tickets para el día "
+                    + t.getFechaViaje() + ". No puede comprar más de 3.");
+            return false;
+        }
         tickets.add(t);
         dao.guardarTicket(t);
         return true;
@@ -42,5 +48,20 @@ public class TicketService {
             total += t.calcularTotal();
         }
         return total;
+    }
+
+    public int contarTicketsPorPasajeroPorDia(String cedulaPasajero, String fecha) {
+        int count = 0;
+        for (Ticket t : tickets) {
+            if (t.getPasajero().getCedula().equals(cedulaPasajero)
+                    && t.getFechaViaje().equals(fecha)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public boolean puedeComprar(String cedulaPasajero, String fecha) {
+        return contarTicketsPorPasajeroPorDia(cedulaPasajero, fecha) < 3;
     }
 }
