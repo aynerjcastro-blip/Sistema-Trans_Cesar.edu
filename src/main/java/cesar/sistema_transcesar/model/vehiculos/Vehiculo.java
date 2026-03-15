@@ -1,16 +1,17 @@
 package cesar.sistema_transcesar.model.vehiculos;
 
 import cesar.sistema_transcesar.model.interfaces.Imprimible;
+import cesar.sistema_transcesar.model.rutas.Ruta;
 
 public abstract class Vehiculo implements Imprimible {
     private String placa;
-    private String ruta;
+    private Ruta ruta;
     private int capacidadMaxima;
     private int pasajerosActuales;
     private double tarifaBase;
     private boolean disponible;
 
-    public Vehiculo(String placa, String ruta, int capacidadMaxima, int pasajerosActuales, double tarifaBase, boolean disponible) {
+    public Vehiculo(String placa, Ruta ruta, int capacidadMaxima, int pasajerosActuales, double tarifaBase, boolean disponible) {
         this.placa = placa;
         this.ruta = ruta;
         this.capacidadMaxima = capacidadMaxima;
@@ -27,11 +28,11 @@ public abstract class Vehiculo implements Imprimible {
         this.placa = placa;
     }
 
-    public String getRuta() {
+    public Ruta getRuta() {
         return ruta;
     }
 
-    public void setRuta(String ruta) {
+    public void setRuta(Ruta ruta) {
         this.ruta = ruta;
     }
 
