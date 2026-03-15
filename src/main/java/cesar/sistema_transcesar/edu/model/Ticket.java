@@ -1,8 +1,9 @@
 package cesar.sistema_transcesar.edu.model;
 
+import cesar.sistema_transcesar.model.interfaces.Calculable;
 import cesar.sistema_transcesar.model.interfaces.Imprimible;
 
-public class Ticket implements Imprimible {
+public class Ticket implements Imprimible, Calculable {
 
     private int idTicket;
     private Pasajero pasajero;
@@ -59,6 +60,11 @@ public class Ticket implements Imprimible {
     }
 
     @Override
+    public double calcularTotal() {
+        return pasajero.calcularDescuento(tarifaBase);
+    }
+
+    @Override
     public void imprimirDetalle() {
         System.out.println("=== Ticket ===");
         System.out.println("ID: " + idTicket);
@@ -67,5 +73,6 @@ public class Ticket implements Imprimible {
         System.out.println("Placa Vehiculo: " + placaVehiculo);
         System.out.println("Fecha Viaje: " + fechaViaje);
         System.out.println("Tarifa Base: " + tarifaBase);
+        System.out.println("Total a Pagar: " + calcularTotal());
     }
 }
