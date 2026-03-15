@@ -1,4 +1,4 @@
-package cesar.sistema_transcesar.model;
+package cesar.sistema_transcesar.model.personas;
 
 public class Conductor extends Persona {
 
