@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6bdccf8-0fe3-4785-97f9-8a6025f5ae89" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Bus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Buseta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Buseta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/MicroBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/MicroBus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Vehiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Vehiculo.java" afterDir="false" />
-    </list>
+    <list default="true" id="d6bdccf8-0fe3-4785-97f9-8a6025f5ae89" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1773538169653</updated>
       <workItem from="1773538171482" duration="4879000" />
-      <workItem from="1773588671341" duration="3727000" />
+      <workItem from="1773588671341" duration="4388000" />
     </task>
     <servers />
   </component>

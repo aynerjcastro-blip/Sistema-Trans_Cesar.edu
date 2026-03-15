@@ -1,6 +1,8 @@
 package cesar.sistema_transcesar.model.personas;
 
-public class Ruta {
+import cesar.sistema_transcesar.model.interfaces.Imprimible;
+
+public class Ruta implements Imprimible {
     private String codigo;
     private String origen;
     private String destino;
@@ -57,12 +59,12 @@ public class Ruta {
     }
 
     @Override
-    public String toString() {
-        return "\nRuta..."
+    public void imprimirDetalle() {
+        System.out.println("\nRuta..."
                 + "\nCodigo: " + codigo
                 + "\nOrigen: " + origen
                 + "\nDestino: " + destino
                 + "\nDistancia (km): " + distanciaKm
-                + "\nTiempo Estimado (min): " + tiempoEstimadoMin;
+                + "\nTiempo Estimado (min): " + tiempoEstimadoMin);
     }
 }
