@@ -10,9 +10,11 @@ public class TicketService {
 
     private List<Ticket> tickets;
     private TicketDAO dao;
+    private FestivosService festivosService;
 
     public TicketService() {
         this.dao = new TicketDAO();
+        this.festivosService = new FestivosService();
         this.tickets = new ArrayList<>(dao.cargarTickets());
     }
 
@@ -23,6 +25,8 @@ public class TicketService {
                     + t.getFechaViaje() + ". No puede comprar más de 3.");
             return false;
         }
+        double tarifaAjustada = festivosService.aplicarTarifaFestivo(t.getTarifaBase(), t.getFechaViaje());
+        t.setTarifaBase(tarifaAjustada);
         tickets.add(t);
         dao.guardarTicket(t);
         return true;

@@ -1,5 +1,7 @@
 package cesar.sistema_transcesar.edu.dao;
 
+import cesar.sistema_transcesar.edu.model.PasajeroAdultoMayor;
+import cesar.sistema_transcesar.edu.model.PasajeroEstudiante;
 import cesar.sistema_transcesar.edu.model.PasajeroRegular;
 import cesar.sistema_transcesar.edu.model.Ticket;
 
@@ -46,10 +48,15 @@ public class TicketDAO {
                     int id = Integer.parseInt(partes[0]);
                     String cedula = partes[1];
                     String nombre = partes[2];
+                    String tipo = partes[3];
                     String placa = partes[4];
                     String fecha = partes[5];
                     double tarifa = Double.parseDouble(partes[6]);
-                    PasajeroRegular pasajero = new PasajeroRegular(cedula, nombre, "");
+                    var pasajero = switch (tipo) {
+                        case "Estudiante" -> new PasajeroEstudiante(cedula, nombre, "");
+                        case "AdultoMayor" -> new PasajeroAdultoMayor(cedula, nombre, "");
+                        default -> new PasajeroRegular(cedula, nombre, "");
+                    };
                     lista.add(new Ticket(id, pasajero, placa, fecha, tarifa));
                 }
             }

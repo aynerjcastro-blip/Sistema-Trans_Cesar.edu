@@ -37,7 +37,7 @@ public class PersonaService {
     }
 
     public boolean registrarPasajero(Pasajero p) {
-        if (buscarPajajeroPorCedula(p.getCedula()) != null) {
+        if (buscarPasajeroPorCedula(p.getCedula()) != null) {
             System.out.println("Error: Ya existe un pasajero con cedula " + p.getCedula());
             return false;
         }
@@ -63,7 +63,7 @@ public class PersonaService {
         return null;
     }
 
-    public Pasajero buscarPajajeroPorCedula(String cedula) {
+    public Pasajero buscarPasajeroPorCedula(String cedula) {
         for (Pasajero p : pasajeros) {
             if (p.getCedula().equals(cedula)) {
                 return p;
