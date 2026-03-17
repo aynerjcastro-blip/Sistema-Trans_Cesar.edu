@@ -11,6 +11,10 @@ public abstract class Persona implements Imprimible {
         this.nombre = nombre;
     }
 
+    public Persona(){
+
+    }
+
     public String getCedula() {
         return cedula;
     }
@@ -29,7 +33,7 @@ public abstract class Persona implements Imprimible {
 
     @Override
     public void imprimirDetalle(){
-        System.out.println("Cedula:" + cedula
-        + "Nombre: " + nombre);
+        System.out.println("\nCedula:" + cedula
+        + "\nNombre: " + nombre);
     }
 }

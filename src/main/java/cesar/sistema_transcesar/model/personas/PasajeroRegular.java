@@ -1,4 +1,4 @@
-package cesar.sistema_transcesar.edu.model.personas;
+package cesar.sistema_transcesar.model.personas;
 
 public class PasajeroRegular extends Pasajero {
 

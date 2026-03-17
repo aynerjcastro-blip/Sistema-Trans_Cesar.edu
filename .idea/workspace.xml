@@ -4,7 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d6bdccf8-0fe3-4785-97f9-8a6025f5ae89" name="Changes" comment="" />
+    <list default="true" id="d6bdccf8-0fe3-4785-97f9-8a6025f5ae89" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/Pasajero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/Pasajero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroAdultoMayor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroAdultoMayor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroEstudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroEstudiante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroRegular.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroRegular.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/Persona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/rutas/Ruta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/rutas/Ruta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Bus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Buseta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Buseta.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/MicroBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/MicroBus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Vehiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Vehiculo.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -38,30 +52,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "feature/req1-rutas",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Jose Reales/IdeaProjects/Sistema-Trans_Cesar.edu",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "configurable.group.appearance",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature/req1-rutas&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Jose Reales/IdeaProjects/Sistema-Trans_Cesar.edu&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -78,11 +104,33 @@
       <option name="presentableId" value="Default" />
       <updated>1773538169653</updated>
       <workItem from="1773538171482" duration="4879000" />
-      <workItem from="1773588671341" duration="4388000" />
+      <workItem from="1773588671341" duration="4975000" />
+      <workItem from="1773712076954" duration="1756000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="96c9768c-959b-487f-96b0-d0e7880b12b4" value="TOOL_WINDOW" />
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="96c9768c-959b-487f-96b0-d0e7880b12b4">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -1,4 +1,4 @@
-package cesar.sistema_transcesar.model.personas;
+package cesar.sistema_transcesar.model.rutas;
 
 import cesar.sistema_transcesar.model.interfaces.Imprimible;
 
