@@ -9,7 +9,7 @@ public class PersonaDAO {
 
     private static final String ARCHIVO = "personas.txt";
 
-    // ===== GUARDAR =====
+
     public void guardar(Persona persona) {
         try (FileWriter fw = new FileWriter(ARCHIVO, true);
              PrintWriter pw = new PrintWriter(fw)) {
@@ -21,7 +21,7 @@ public class PersonaDAO {
         }
     }
 
-    // ===== CARGAR =====
+
     public List<Persona> cargar() {
         List<Persona> personas = new ArrayList<>();
 
