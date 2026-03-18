@@ -15,7 +15,7 @@ public class Ticket implements Imprimible, Calculable {
     private double tarifaBase;
     private double totalPagado;
 
-    // ====== CONSTRUCTOR ======
+
     public Ticket(int id, Pasajero pasajero, Vehiculo vehiculo, LocalDate fecha, double tarifaBase) {
         this.id = id;
         this.pasajero = pasajero;
@@ -25,7 +25,7 @@ public class Ticket implements Imprimible, Calculable {
         this.totalPagado = calcularTotal();
     }
 
-    // ====== GETTERS ======
+
     public int getId() {
         return id;
     }
@@ -50,7 +50,7 @@ public class Ticket implements Imprimible, Calculable {
         return totalPagado;
     }
 
-    // ====== SETTERS ======
+
     public void setId(int id) {
         this.id = id;
     }
@@ -75,14 +75,14 @@ public class Ticket implements Imprimible, Calculable {
         this.totalPagado = totalPagado;
     }
 
-    // ====== CALCULABLE ======
+
     @Override
     public double calcularTotal() {
         double descuento = pasajero.calcularDescuento();
         return tarifaBase - (tarifaBase * descuento);
     }
 
-    // ====== IMPRIMIBLE ======
+
     @Override
     public void imprimirDetalle() {
         System.out.println("===== TICKET #" + id + " =====");
