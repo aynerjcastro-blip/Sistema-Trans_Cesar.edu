@@ -67,4 +67,14 @@ public class Ruta implements Imprimible {
                 + "\nDistancia (km): " + distanciaKm
                 + "\nTiempo Estimado (min): " + tiempoEstimadoMin);
     }
+
+    @Override
+    public String toString() {
+        return codigo + ";" +
+                origen + ";" +
+                destino + ";" +
+                distanciaKm + ";" +
+                tiempoEstimadoMin;
+    }
+
 }

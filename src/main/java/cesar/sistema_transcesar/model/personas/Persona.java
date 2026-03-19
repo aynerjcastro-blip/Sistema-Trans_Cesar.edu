@@ -36,4 +36,11 @@ public abstract class Persona implements Imprimible {
         System.out.println("\nCedula:" + cedula
         + "\nNombre: " + nombre);
     }
+
+    @Override
+    public String toString() {
+        return cedula + ";" +
+                nombre;
+    }
+
 }

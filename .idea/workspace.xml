@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d6bdccf8-0fe3-4785-97f9-8a6025f5ae89" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/Pasajero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/Pasajero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroAdultoMayor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroAdultoMayor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroEstudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroEstudiante.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroRegular.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroRegular.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/Persona.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/rutas/Ruta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/rutas/Ruta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Bus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Bus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Buseta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Buseta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/MicroBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/MicroBus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Vehiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Vehiculo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,6 +100,7 @@
       <workItem from="1773538171482" duration="4879000" />
       <workItem from="1773588671341" duration="4975000" />
       <workItem from="1773712076954" duration="1756000" />
+      <workItem from="1773961190745" duration="555000" />
     </task>
     <servers />
   </component>
