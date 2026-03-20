@@ -3,12 +3,15 @@ package cesar.sistema_transcesar.services;
 import cesar.sistema_transcesar.model.dao.PersonaDAO;
 import cesar.sistema_transcesar.model.personas.*;
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class PersonaService {
 
-    // CORRECCIÓN: antes solo validaba que la licencia no fuera vacía.
-    // El PDF exige categorías B1, B2, C1, C2 — se valida contra esta lista
+    // Validación de categoría según el PDF (B1, B2, C1, C2)
     private static final List<String> CATEGORIAS_VALIDAS = List.of("B1", "B2", "C1", "C2");
 
     private PersonaDAO personaDAO;
@@ -17,52 +20,61 @@ public class PersonaService {
         this.personaDAO = new PersonaDAO();
     }
 
-    // ─── CONDUCTOR ──────────────────────────────────────────────────
+    //  CONDUCTOR
 
     public void registrarConductor(String cedula, String nombre, String licencia, String categoria) {
-
-        if (cedula == null || cedula.isBlank()) {
-            System.out.println("Error: la cedula no puede estar vacia.");
-            return;
-        }
-        if (nombre == null || nombre.isBlank()) {
-            System.out.println("Error: el nombre no puede estar vacio.");
-            return;
-        }
         if (licencia == null || licencia.isBlank()) {
-            System.out.println("Error: el numero de licencia no puede estar vacio.");
-            return;
+            throw new IllegalArgumentException("El conductor debe tener licencia registrada.");
         }
-        // CORRECCIÓN: validación real de categoría según el PDF (B1, B2, C1, C2)
+        // CORRECCIÓN: el PersonaService del Líder eliminó esta validación
         if (!CATEGORIAS_VALIDAS.contains(categoria.toUpperCase())) {
-            System.out.println("Error: categoria invalida. Use B1, B2, C1 o C2.");
-            return;
+            throw new IllegalArgumentException("Categoria invalida. Use B1, B2, C1 o C2.");
         }
-
         Conductor conductor = new Conductor(cedula, nombre, licencia, categoria.toUpperCase());
-        // CORRECCIÓN: antes llamaba personaDAO.guardar() genérico que perdía
-        // licencia y categoría. Ahora llama guardarConductor()
         personaDAO.guardarConductor(conductor);
-        System.out.println("Conductor registrado correctamente.");
     }
 
     public List<Conductor> listarConductores() {
         return personaDAO.cargarConductores();
     }
 
-    // ─── PASAJERO ───────────────────────────────────────────────────
+    public Conductor buscarConductor(String cedula) {
+        for (Conductor c : personaDAO.cargarConductores()) {
+            if (c.getCedula().equalsIgnoreCase(cedula)) {
+                return c;
+            }
+        }
+        return null;
+    }
+
+    //  PASAJERO
+
+
+    public void registrarPasajero(String identificacion, String nombre, String fechaNacimiento, int tipo) {
+        LocalDate nacimiento;
+        try {
+            nacimiento = LocalDate.parse(fechaNacimiento, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        } catch (DateTimeParseException e) {
+            throw new IllegalArgumentException("Formato de fecha invalido. Use dd/MM/yyyy");
+        }
+
+        int edad = Period.between(nacimiento, LocalDate.now()).getYears();
+
+        Pasajero pasajero;
+        if (edad >= 60) {
+            // Adulto mayor asignado automáticamente por edad — sin importar lo que elija el usuario
+            pasajero = new PasajeroAdultoMayor(identificacion, nombre);
+        } else if (tipo == 2) {
+            pasajero = new PasajeroEstudiante(identificacion, nombre);
+        } else {
+            pasajero = new PasajeroRegular(identificacion, nombre);
+        }
+
+        personaDAO.guardarPasajero(pasajero);
+    }
+
 
     public void registrarPasajero(String cedula, String nombre, String tipo) {
-
-        if (cedula == null || cedula.isBlank()) {
-            System.out.println("Error: la cedula no puede estar vacia.");
-            return;
-        }
-        if (nombre == null || nombre.isBlank()) {
-            System.out.println("Error: el nombre no puede estar vacio.");
-            return;
-        }
-
         Pasajero pasajero;
         switch (tipo.toLowerCase()) {
             case "estudiante":
@@ -76,14 +88,19 @@ public class PersonaService {
                 pasajero = new PasajeroRegular(cedula, nombre);
                 break;
         }
-
-        // CORRECCIÓN: antes llamaba personaDAO.guardar() genérico que perdía
-        // el tipo del pasajero. Ahora llama guardarPasajero()
         personaDAO.guardarPasajero(pasajero);
-        System.out.println("Pasajero registrado. Tipo: " + pasajero.getClass().getSimpleName());
     }
 
     public List<Pasajero> listarPasajeros() {
         return personaDAO.cargarPasajeros();
+    }
+
+    public Pasajero buscarPasajero(String identificacion) {
+        for (Pasajero p : personaDAO.cargarPasajeros()) {
+            if (p.getCedula().equalsIgnoreCase(identificacion)) {
+                return p;
+            }
+        }
+        return null;
     }
 }
