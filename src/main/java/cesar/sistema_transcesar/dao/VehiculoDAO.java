@@ -20,5 +20,31 @@ public class VehiculoDAO {
             e.printStackTrace();
         }
     }
+        public List<Vehiculo> cargar(){
+        List<Vehiculo> vehiculos = new ArrayList<>();
+        try(BufferedReader br = new BufferedReader(new FileReader(ARCHIVO))){
+            String linea;
+            while((linea = br.readLine()) != null){
+                String[] datos = linea.split(";");
+                if(datos.length == 4){
+                    String placa = datos[0];
+                    String ruta = datos[1];
+                    String tipo = datos[2];
+                    boolean disponible = Boolean.parseBoolean(datos[3]);
+                    switch (tipo) {
+                        case "Buseta" -> {vehiculos.add(new Buseta(placa, ruta, disponible));break;}
+                        case "MicroBus" -> {vehiculos.add(new MicroBus(placa, ruta, disponible));break;}
+                        case "Bus" -> {vehiculos.add(new Bus(placa, ruta, disponible));break;}
+                        default -> {System.out.println("Tipo de vehículo no válido: " + tipo);}
+                    }
+                }
+            }
+        }catch(IOException e){
+            System.out.println("Error al cargar el archivo: "+e.getMessage());
+            e.printStackTrace();
+        }
+        return vehiculos;
+
+    }
 
 }
