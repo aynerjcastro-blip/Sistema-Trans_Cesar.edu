@@ -4,6 +4,7 @@ import cesar.sistema_transcesar.dao.VehiculoDAO;
 import cesar.sistema_transcesar.model.vehiculos.Vehiculo;
 import cesar.sistema_transcesar.model.vehiculos.Buseta;
 import cesar.sistema_transcesar.model.vehiculos.MicroBus;
+import cesar.sistema_transcesar.model.personas.Conductor;
 import cesar.sistema_transcesar.model.vehiculos.Bus;
 import java.util.List;
 
@@ -55,5 +56,16 @@ public class VehiculoService {
         return v.getPasajerosActuales()<v.getCapacidadMaxima();
     }
 
-    
+    public void asignarConductor(String placa, Conductor conductor){
+        Vehiculo v = buscarPorPlaca(placa);
+        if(v==null){
+            throw new IllegalArgumentException("No existe un vehiculo con la placa: "+placa);
+        }
+        if(conductor.getLicencia()== null || conductor.getLicencia().isEmpty()){
+            throw new IllegalArgumentException("El conductor no tiene licencia registrada: ");
+        }
+        // TODO: v.setConductor(conductor) cuando Dev 1 agregue el atributo
+    }
+
+
 }
