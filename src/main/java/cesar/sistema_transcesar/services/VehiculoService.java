@@ -9,8 +9,8 @@ import java.util.List;
 
 public class VehiculoService {
 
-    private List<Vehiculo> vehiculos;
-    private VehiculoDAO dao;
+    private  List<Vehiculo> vehiculos;
+    private  VehiculoDAO dao;
 
     public VehiculoService() {
         this.dao = new VehiculoDAO();

@@ -4,9 +4,14 @@ import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+
+import cesar.sistema_transcesar.services.VehiculoService;
+
 public class Main {
 
     static Scanner consola = new Scanner(System.in);
+    static VehiculoService vehiculoService = new VehiculoService();
+
 
     public static void main(String[] args) {
         int opcion;
@@ -51,14 +56,20 @@ public class Main {
                 3. Bus
                 """);
                 try{
+                    System.out.println("Tipo:");
                     var tipo = Integer.parseInt(consola.nextLine());
         
                     System.out.println("Placa: ");
                     var placa = consola.nextLine();
 
                     System.out.println("Ruta: ");
-                    var estado = Integer.parseInt(consola.nextLine());
-                    //TODO: VehiculoService.registrar(tipo,placa,estado
+                    var ruta = consola.nextLine();
+
+                    System.out.println("Estado: ");
+                    var disponible=  Boolean.parseBoolean(consola.nextLine());
+
+                    vehiculoService.registrar(tipo, placa, ruta, disponible);
+
                 }catch(InputMismatchException e){
                     System.out.println("Error: Debe ingresar un numero valido."+e.getMessage());
                     e.printStackTrace();
