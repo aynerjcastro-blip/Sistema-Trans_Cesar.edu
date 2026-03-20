@@ -70,8 +70,13 @@ public abstract class Vehiculo implements Imprimible {
     public int getCuposDisponibles() {
         return capacidadMaxima - pasajerosActuales;
     }
-
+    /*toString preparado para dao con ; */
     @Override
+    public String toString() {
+        return placa + ";" + ruta + ";" + capacidadMaxima + ";" + pasajerosActuales + ";" + tarifaBase + ";" + disponible;
+    }
+    
+    @Override   
     public void imprimirDetalle(){
         System.out.println("Placa: " + placa
         + "Ruta: " + ruta
