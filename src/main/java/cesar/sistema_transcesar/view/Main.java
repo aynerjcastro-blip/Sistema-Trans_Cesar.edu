@@ -3,9 +3,12 @@ package cesar.sistema_transcesar.view;
 import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.List;
 
 
 import cesar.sistema_transcesar.services.VehiculoService;
+import cesar.sistema_transcesar.model.*;
+import cesar.sistema_transcesar.model.vehiculos.Vehiculo;;
 
 public class Main {
 
@@ -82,8 +85,14 @@ public class Main {
     
     static void listarVehiculos() {
         System.out.println("\n** Listar Vehiculos **");
-        //TODO: VehiculoService.listar();
-        System.out.println("pendiente a integracion con service");
+        List<Vehiculo> lista = vehiculoService.listar();
+        if(lista.isEmpty()){
+            System.out.println("No hay vehiculos registrados.");
+        }else{
+            for (Vehiculo v : lista) {
+                v.imprimirDetalle();
+            }
+        }
     }
 
     
