@@ -12,7 +12,7 @@ import cesar.sistema_transcesar.model.vehiculos.*;
 public class VehiculoDAO {
     private static final String ARCHIVO = "vehiculos.txt";
     
-    private void guardar(Vehiculo vehiculo){
+    public void guardar(Vehiculo vehiculo){
         try(FileWriter fw = new FileWriter(ARCHIVO,true)){
             fw.write(vehiculo.toString()+"\n");
         }catch(IOException e){
