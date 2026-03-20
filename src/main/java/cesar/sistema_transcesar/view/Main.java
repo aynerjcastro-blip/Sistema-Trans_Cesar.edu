@@ -193,6 +193,40 @@ public class Main {
     }
     
 
-    // TODO: Actividad 12
-    static void verEstadisticas() {}
+    
+    static void verEstadisticas() {
+        System.out.println("\n** Estadisticas del Sistema**");
+        System.out.println("1. Total recaudado");
+        System.out.println("2. Pasajeros por tipo");
+        System.out.println("3. Vehiculo con mas tickets vendidos");
+        System.out.println("Seleccione una opcion: ");
+        try{
+            int opcion = Integer.parseInt(consola.nextLine());
+            switch (opcion) {
+                case 1: mostrarTotalRecaudado();break;
+                case 2: mostrarPasajerosPorTipo();break;
+                case 3: mostrarVehiculoTop();break;            
+                default: System.out.println("Opcion no invalida.");break;
+            }
+        }catch(InputMismatchException e){
+            consola.nextLine();
+            System.out.println("Error: debe ingresar un numero valido: "+e.getMessage());
+            e.printStackTrace();            
+        }
+    }
+
+    static void mostrarTotalRecaudado() {
+        // TODO: ticketService.calcularTotalRecaudado()
+        System.out.println("(pendiente integracion con TicketService)");
+    }
+
+    static void mostrarPasajerosPorTipo() {
+        // TODO: ticketService.contarPasajerosPorTipo()
+        System.out.println("(pendiente integracion con TicketService)");
+    }
+
+    static void mostrarVehiculoTop() {
+        // TODO: ticketService.obtenerVehiculoTop()
+        System.out.println("(pendiente integracion con TicketService)");
+    }
 }
