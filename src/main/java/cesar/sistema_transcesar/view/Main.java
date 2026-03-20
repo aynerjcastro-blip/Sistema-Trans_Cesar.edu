@@ -7,7 +7,6 @@ import java.util.List;
 
 
 import cesar.sistema_transcesar.services.VehiculoService;
-import cesar.sistema_transcesar.model.*;
 import cesar.sistema_transcesar.model.vehiculos.Vehiculo;;
 
 public class Main {

@@ -1,6 +1,7 @@
 package cesar.sistema_transcesar.dao;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -39,6 +40,8 @@ public class VehiculoDAO {
                     }
                 }
             }
+        }catch(FileNotFoundException e){
+      
         }catch(IOException e){
             System.out.println("Error al cargar el archivo: "+e.getMessage());
             e.printStackTrace();
