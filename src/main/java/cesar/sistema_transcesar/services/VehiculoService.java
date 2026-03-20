@@ -33,4 +33,27 @@ public class VehiculoService {
         vehiculos.add(nuevo);
         dao.guardar(nuevo);
     }
+
+    public List<Vehiculo> listar(){
+        return vehiculos;
+    }
+
+    public Vehiculo buscarPorPlaca(String placa){
+        for (Vehiculo v : vehiculos) {
+            if(v.getPlaca().equalsIgnoreCase(placa)){
+                return v;
+            }
+        }
+        return null;
+    }
+
+    public boolean tieneCupos(String placa){
+        Vehiculo v = buscarPorPlaca(placa);
+        if(v==null){
+            throw new IllegalArgumentException("No existe un vehiculo con la placa: "+placa);
+        }
+        return v.getPasajerosActuales()<v.getCapacidadMaxima();
+    }
+
+    
 }
