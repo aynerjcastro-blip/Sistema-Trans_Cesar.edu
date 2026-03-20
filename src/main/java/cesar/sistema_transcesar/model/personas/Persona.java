@@ -30,6 +30,10 @@ public abstract class Persona implements Imprimible {
         this.nombre = nombre;
     }
 
+        @Override
+    public String toString() {
+        return getCedula() + ";" + getNombre() + ";" + getClass().getSimpleName();
+    }
     @Override
     public void imprimirDetalle(){
         System.out.println("Cedula:" + cedula
