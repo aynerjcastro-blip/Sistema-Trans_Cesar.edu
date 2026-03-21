@@ -11,4 +11,13 @@ public class Reserva {
     private LocalDate fechaCreacion;
     private LocalDate fechaViaje;
     private String estado; // Activa, Convertida, Cancelada
+
+    public Reserva(String codigo, Pasajero pasajero, Vehiculo vehiculo, LocalDate fechaCreacion, LocalDate fechaViaje, String estado) {
+        this.codigo = codigo;
+        this.pasajero = pasajero;
+        this.vehiculo = vehiculo;
+        this.fechaCreacion = fechaCreacion;
+        this.fechaViaje = fechaViaje;
+        this.estado = estado;
+    }
 }
