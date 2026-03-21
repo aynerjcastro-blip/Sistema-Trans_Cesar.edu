@@ -6,12 +6,13 @@ import cesar.sistema_transcesar.model.vehiculos.Buseta;
 import cesar.sistema_transcesar.model.vehiculos.MicroBus;
 import cesar.sistema_transcesar.model.personas.Conductor;
 import cesar.sistema_transcesar.model.vehiculos.Bus;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VehiculoService {
 
-    private  List<Vehiculo> vehiculos;
-    private  VehiculoDAO dao;
+    private List<Vehiculo> vehiculos;
+    private VehiculoDAO dao;
 
     public VehiculoService() {
         this.dao = new VehiculoDAO();
@@ -35,37 +36,46 @@ public class VehiculoService {
         dao.guardar(nuevo);
     }
 
-    public List<Vehiculo> listar(){
+    public List<Vehiculo> listar() {
         return vehiculos;
     }
 
-    public Vehiculo buscarPorPlaca(String placa){
+    public Vehiculo buscarPorPlaca(String placa) {
         for (Vehiculo v : vehiculos) {
-            if(v.getPlaca().equalsIgnoreCase(placa)){
+            if (v.getPlaca().equalsIgnoreCase(placa)) {
                 return v;
             }
         }
         return null;
     }
 
-    public boolean tieneCupos(String placa){
+    public boolean tieneCupos(String placa) {
         Vehiculo v = buscarPorPlaca(placa);
-        if(v==null){
-            throw new IllegalArgumentException("No existe un vehiculo con la placa: "+placa);
+        if (v == null) {
+            throw new IllegalArgumentException("No existe un vehiculo con la placa: " + placa);
         }
-        return v.getPasajerosActuales()<v.getCapacidadMaxima();
+        return v.getPasajerosActuales() < v.getCapacidadMaxima();
     }
 
-    public void asignarConductor(String placa, Conductor conductor){
+    public void asignarConductor(String placa, Conductor conductor) {
         Vehiculo v = buscarPorPlaca(placa);
-        if(v==null){
-            throw new IllegalArgumentException("No existe un vehiculo con la placa: "+placa);
+        if (v == null) {
+            throw new IllegalArgumentException("No existe un vehiculo con la placa: " + placa);
         }
-        if(conductor.getLicencia()== null || conductor.getLicencia().isEmpty()){
-            throw new IllegalArgumentException("El conductor no tiene licencia registrada: ");
+        if (conductor.getLicencia() == null || conductor.getLicencia().isEmpty()) {
+            throw new IllegalArgumentException("El conductor no tiene licencia registrada.");
         }
-        // TODO: v.setConductor(conductor) cuando Dev 1 agregue el atributo
+        v.setConductor(conductor);
     }
 
-
+    public List<Vehiculo> buscarPorRuta(String codigoRuta) {
+        List<Vehiculo> resultado = new ArrayList<>();
+        for (Vehiculo v : vehiculos) {
+            if (v.getRuta() != null && 
+                v.getRuta().getCodigo().equalsIgnoreCase(codigoRuta)) {
+                resultado.add(v);
+            }
+        }
+        return resultado;
+    }
 }

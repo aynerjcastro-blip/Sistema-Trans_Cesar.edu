@@ -1,6 +1,7 @@
 package cesar.sistema_transcesar.model.vehiculos;
 
 import cesar.sistema_transcesar.model.interfaces.Imprimible;
+import cesar.sistema_transcesar.model.personas.Conductor;
 import cesar.sistema_transcesar.model.rutas.Ruta;
 
 public abstract class Vehiculo implements Imprimible {
@@ -141,4 +142,9 @@ public abstract class Vehiculo implements Imprimible {
                 getClass().getSimpleName() + ";" +
                 disponible;
     }
+    private Conductor conductor;
+
+    public Conductor getConductor() { return conductor; }
+    public void setConductor(Conductor conductor) { this.conductor = conductor; }
+
 }
