@@ -9,6 +9,8 @@ import java.util.List;
 import cesar.sistema_transcesar.services.PersonaService;
 import cesar.sistema_transcesar.services.TicketService;
 import cesar.sistema_transcesar.services.VehiculoService;
+import cesar.sistema_transcesar.services.ReporteService;
+import cesar.sistema_transcesar.model.Ticket;
 import cesar.sistema_transcesar.model.personas.Conductor;
 import cesar.sistema_transcesar.model.personas.Pasajero;
 import cesar.sistema_transcesar.model.vehiculos.Vehiculo;
@@ -22,6 +24,7 @@ public class Main {
         personaService.listarPasajeros(),
         vehiculoService.listar()
     );
+    static ReporteService reporteService = new ReporteService(ticketService);
 
     public static void main(String[] args) {
         int opcion;
@@ -38,6 +41,7 @@ public class Main {
                 case 6: listarPasajeros(); break;
                 case 7: venderTicket(); break;
                 case 8: verEstadisticas(); break;
+                case 9: mostrarMenuReportes();break;
                 case 0: System.out.println("Saliendo del sistema..."); break;
                 default: System.out.println("Opcion no valida.");
             }
@@ -54,6 +58,7 @@ public class Main {
         System.out.println("6. Listar pasajeros");
         System.out.println("7. Vender ticket");
         System.out.println("8. Ver estadisticas");
+        System.out.println("9. Reportes");
         System.out.println("0. Salir");
         System.out.print("Selecciona una opcion: ");
     }
@@ -247,6 +252,115 @@ public class Main {
             top.imprimirDetalle();
         } else {
             System.out.println("No hay tickets registrados aun.");
+        }
+    }
+
+    static void mostrarMenuReportes() {
+    System.out.println("\n** Modulo de Reportes **");
+    System.out.println("1. Tickets por fecha especifica");
+    System.out.println("2. Tickets por tipo de vehiculo");
+    System.out.println("3. Tickets por tipo de pasajero");
+    System.out.println("4. Resumen del dia actual");
+    System.out.print("Seleccione una opcion: ");
+    try {
+        int opcion = Integer.parseInt(consola.nextLine());
+        switch (opcion) {
+            case 1: reportePorFecha(); break;
+            case 2: reportePorTipoVehiculo(); break;
+            case 3: reportePorTipoPasajero(); break;
+            case 4: reporteService.resumenDiaActual(); break;
+            default: System.out.println("Opcion no valida.");
+        }
+    } catch (InputMismatchException e) {
+        System.out.println("Error: debe ingresar un numero valido.");
+    }
+}
+
+
+static void reportePorFecha() {
+    System.out.print("Ingrese la fecha (dd/MM/yyyy): ");
+    String fechaStr = consola.nextLine();
+    try {
+        LocalDate fecha = LocalDate.parse(fechaStr, 
+            java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        List<Ticket> resultado = reporteService.reportePorFecha(fecha);
+        if (resultado.isEmpty()) {
+            System.out.println("No hay tickets para esa fecha.");
+        } else {
+            System.out.println("Tickets vendidos el " + fecha + ":");
+            for (Ticket t : resultado) {
+                t.imprimirDetalle();
+            }
+        }
+    } catch (java.time.format.DateTimeParseException e) {
+        System.out.println("Error: formato de fecha invalido. Use dd/MM/yyyy");
+    }
+}
+
+
+static void reportePorTipoVehiculo() {
+    System.out.println("""
+            Tipo de vehiculo:
+            1. Buseta
+            2. MicroBus
+            3. Bus
+            """);
+    System.out.print("Seleccione tipo: ");
+    try {
+        int opcion = Integer.parseInt(consola.nextLine());
+        String tipo;
+        switch (opcion) {
+            case 1: tipo = "Buseta"; break;
+            case 2: tipo = "MicroBus"; break;
+            case 3: tipo = "Bus"; break;
+            default:
+                System.out.println("Opcion no valida.");
+                return;
+        }
+        List<Ticket> resultado = reporteService.reportePorTipoVehiculo(tipo);
+        if (resultado.isEmpty()) {
+            System.out.println("No hay tickets para ese tipo de vehiculo.");
+        } else {
+            System.out.println("Tickets vendidos en " + tipo + ":");
+            for (Ticket t : resultado) {
+                t.imprimirDetalle();
+            }
+        }
+    } catch (NumberFormatException e) {
+        System.out.println("Error: debe ingresar un numero valido.");
+    }
+}
+
+    static void reportePorTipoPasajero() {
+        System.out.println("""
+                Tipo de pasajero:
+                1. PasajeroRegular
+                2. PasajeroEstudiante
+                3. PasajeroAdultoMayor
+                """);
+        System.out.print("Seleccione tipo: ");
+        try {
+            int opcion = Integer.parseInt(consola.nextLine());
+            String tipo;
+            switch (opcion) {
+                case 1: tipo = "PasajeroRegular"; break;
+                case 2: tipo = "PasajeroEstudiante"; break;
+                case 3: tipo = "PasajeroAdultoMayor"; break;
+                default:
+                    System.out.println("Opcion no valida.");
+                    return;
+            }
+            List<Ticket> resultado = reporteService.reportePorTipoPasajero(tipo);
+            if (resultado.isEmpty()) {
+                System.out.println("No hay tickets para ese tipo de pasajero.");
+            } else {
+                System.out.println("Tickets vendidos a " + tipo + ":");
+                for (Ticket t : resultado) {
+                    t.imprimirDetalle();
+                }
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Error: debe ingresar un numero valido.");
         }
     }
 }
