@@ -7,7 +7,7 @@ import java.time.Period;
 public abstract class Persona implements Imprimible {
     private String identificacion;
     private String nombre;
-    private LocalDate fechaNacimiento;
+    protected LocalDate fechaNacimiento;
 
     public Persona(){
 
@@ -58,8 +58,13 @@ public abstract class Persona implements Imprimible {
     }
 
     @Override
+    public String toString() {
+        return identificacion + ";" + nombre;
+    }
+
+    @Override
     public void imprimirDetalle(){
-        System.out.println("Identificación:" + identificacion
+        System.out.println("Identificación: " + identificacion
         + "Nombre: " + nombre
         + "Edad: " + calcularEdad());
     }

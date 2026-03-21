@@ -1,9 +1,11 @@
 package cesar.sistema_transcesar.model.personas;
 
+import java.time.LocalDate;
+
 public class PasajeroEstudiante extends Pasajero {
 
-    public PasajeroEstudiante(String id, String nombre) {
-        super(id, nombre);
+    public PasajeroEstudiante(String id, String nombre, LocalDate fechaNacimiento) {
+        super(id, nombre,fechaNacimiento);
     }
 
     @Override

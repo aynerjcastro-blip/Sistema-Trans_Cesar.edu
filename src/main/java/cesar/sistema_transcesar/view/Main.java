@@ -14,6 +14,7 @@ import cesar.sistema_transcesar.services.ReservaService;
 import cesar.sistema_transcesar.model.Ticket;
 import cesar.sistema_transcesar.model.personas.Conductor;
 import cesar.sistema_transcesar.model.personas.Pasajero;
+import cesar.sistema_transcesar.model.reservas.Reserva;
 import cesar.sistema_transcesar.model.vehiculos.Vehiculo;
 
 public class Main {
@@ -50,6 +51,7 @@ public class Main {
                 case 7: venderTicket(); break;
                 case 8: verEstadisticas(); break;
                 case 9: mostrarMenuReportes();break;
+                case 10: mostrarMenuReservas();
                 case 0: System.out.println("Saliendo del sistema..."); break;
                 default: System.out.println("Opcion no valida.");
             }
@@ -67,9 +69,12 @@ public class Main {
         System.out.println("7. Vender ticket");
         System.out.println("8. Ver estadisticas");
         System.out.println("9. Reportes");
+        System.out.println("10.Reservas");
         System.out.println("0. Salir");
         System.out.print("Selecciona una opcion: ");
     }
+
+
 
     static void registrarVehiculo() {
         System.out.println("\n** Registrar Vehiculo **");
@@ -370,5 +375,118 @@ static void reportePorTipoVehiculo() {
         } catch (NumberFormatException e) {
             System.out.println("Error: debe ingresar un numero valido.");
         }
+    }
+
+        static void mostrarMenuReservas() {
+        System.out.println("\n** Modulo de Reservas **");
+        System.out.println("1. Crear reserva");
+        System.out.println("2. Cancelar reserva");
+        System.out.println("3. Listar reservas activas");
+        System.out.println("4. Historial de reservas de un pasajero");
+        System.out.println("5. Convertir reserva en ticket");
+        System.out.println("6. Verificar reservas vencidas");
+        System.out.print("Seleccione una opcion: ");
+        try {
+            int opcion = Integer.parseInt(consola.nextLine());
+            switch (opcion) {
+                case 1: crearReserva(); break;
+                case 2: cancelarReserva(); break;
+                case 3: listarReservasActivas(); break;
+                case 4: historialReservasPasajero(); break;
+                case 5: convertirReservaEnTicket(); break;
+                case 6: verificarReservasVencidas(); break;
+                default: System.out.println("Opcion no valida.");
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Error: debe ingresar un numero valido.");
+        }
+    }
+
+    static void crearReserva() {
+        System.out.println("\n** Crear Reserva **");
+        try {
+            System.out.print("Identificacion del pasajero: ");
+            var identificacion = consola.nextLine();
+            System.out.print("Placa del vehiculo: ");
+            var placa = consola.nextLine();
+            System.out.print("Fecha del viaje (dd/MM/yyyy): ");
+            var fechaStr = consola.nextLine();
+
+            Pasajero pasajero = personaService.buscarPasajero(identificacion);
+            if (pasajero == null) {
+                System.out.println("Error: no existe un pasajero con esa identificacion.");
+                return;
+            }
+            Vehiculo vehiculo = vehiculoService.buscarPorPlaca(placa);
+            if (vehiculo == null) {
+                System.out.println("Error: no existe un vehiculo con esa placa.");
+                return;
+            }
+            LocalDate fechaViaje = LocalDate.parse(fechaStr,
+                java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+            reservaService.crearReserva(pasajero, vehiculo, fechaViaje);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (java.time.format.DateTimeParseException e) {
+            System.out.println("Error: formato de fecha invalido. Use dd/MM/yyyy");
+        }
+    }
+
+    static void cancelarReserva() {
+        System.out.println("\n** Cancelar Reserva **");
+        try {
+            System.out.print("Codigo de la reserva: ");
+            var codigo = consola.nextLine();
+            reservaService.cancelarReserva(codigo);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    static void listarReservasActivas() {
+        System.out.println("\n** Reservas Activas **");
+        List<Reserva> activas = reservaService.listarActivas();
+        if (activas.isEmpty()) {
+            System.out.println("No hay reservas activas.");
+        } else {
+            for (Reserva r : activas) {
+                r.imprimirDetalle();
+            }
+        }
+    }
+
+    static void historialReservasPasajero() {
+        System.out.println("\n** Historial de Reservas **");
+        try {
+            System.out.print("Identificacion del pasajero: ");
+            var identificacion = consola.nextLine();
+            List<Reserva> historial = reservaService.historialPasajero(identificacion);
+            if (historial.isEmpty()) {
+                System.out.println("No hay reservas para ese pasajero.");
+            } else {
+                for (Reserva r : historial) {
+                    r.imprimirDetalle();
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    static void convertirReservaEnTicket() {
+        System.out.println("\n** Convertir Reserva en Ticket **");
+        try {
+            System.out.print("Codigo de la reserva: ");
+            var codigo = consola.nextLine();
+            reservaService.convertirEnTicket(codigo);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    static void verificarReservasVencidas() {
+        System.out.println("\n** Verificar Reservas Vencidas **");
+        reservaService.verificarVencidas();
     }
 }

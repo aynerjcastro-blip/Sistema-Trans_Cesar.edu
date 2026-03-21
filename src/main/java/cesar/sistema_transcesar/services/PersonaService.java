@@ -63,29 +63,29 @@ public class PersonaService {
         Pasajero pasajero;
         if (edad >= 60) {
             // Adulto mayor asignado automáticamente por edad — sin importar lo que elija el usuario
-            pasajero = new PasajeroAdultoMayor(identificacion, nombre);
+            pasajero = new PasajeroAdultoMayor(identificacion, nombre,nacimiento);
         } else if (tipo == 2) {
-            pasajero = new PasajeroEstudiante(identificacion, nombre);
+            pasajero = new PasajeroEstudiante(identificacion, nombre,nacimiento);
         } else {
-            pasajero = new PasajeroRegular(identificacion, nombre);
+            pasajero = new PasajeroRegular(identificacion, nombre,nacimiento);
         }
 
         personaDAO.guardarPasajero(pasajero);
     }
 
 
-    public void registrarPasajero(String cedula, String nombre, String tipo) {
+    public void registrarPasajero(String cedula, String nombre, String tipo,LocalDate fechaNacimiento) {
         Pasajero pasajero;
         switch (tipo.toLowerCase()) {
             case "estudiante":
-                pasajero = new PasajeroEstudiante(cedula, nombre);
+                pasajero = new PasajeroEstudiante(cedula, nombre,fechaNacimiento);
                 break;
             case "adulto":
             case "adultomayor":
-                pasajero = new PasajeroAdultoMayor(cedula, nombre);
+                pasajero = new PasajeroAdultoMayor(cedula, nombre,fechaNacimiento);
                 break;
             default:
-                pasajero = new PasajeroRegular(cedula, nombre);
+                pasajero = new PasajeroRegular(cedula, nombre,fechaNacimiento);
                 break;
         }
         personaDAO.guardarPasajero(pasajero);

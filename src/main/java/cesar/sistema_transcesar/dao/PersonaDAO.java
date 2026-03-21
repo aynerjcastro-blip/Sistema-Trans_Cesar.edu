@@ -3,6 +3,7 @@ package cesar.sistema_transcesar.dao;
 import cesar.sistema_transcesar.model.personas.*;
 
 import java.io.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,9 +88,9 @@ public class PersonaDAO {
                 // Ahora instancia la subclase real según el tipo guardado,
                 // preservando el polimorfismo de calcularDescuento()
                 Pasajero p = switch (d[2].toLowerCase()) {
-                    case "estudiante"  -> new PasajeroEstudiante(d[0], d[1]);
-                    case "adultomayor" -> new PasajeroAdultoMayor(d[0], d[1]);
-                    default            -> new PasajeroRegular(d[0], d[1]);
+                    case "estudiante"  -> new PasajeroEstudiante(d[0], d[1],LocalDate.parse(d[3]));
+                    case "adultomayor" -> new PasajeroAdultoMayor(d[0], d[1],LocalDate.parse(d[3]));
+                    default            -> new PasajeroRegular(d[0], d[1],LocalDate.parse(d[3]));
                 };
                 lista.add(p);
             }
