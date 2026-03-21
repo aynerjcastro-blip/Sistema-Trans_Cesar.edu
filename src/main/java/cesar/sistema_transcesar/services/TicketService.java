@@ -43,13 +43,13 @@ public class TicketService {
                 : tickets.get(tickets.size() - 1).getId() + 1;
     }
 
-    // FESTIVOS
+    //  FESTIVOS
 
     private boolean esFestivo(LocalDate fecha) {
         return FESTIVOS.contains(fecha);
     }
 
-    // LÍMITE DIARIO
+    //  LÍMITE DIARIO
 
     private int contarTicketsPorDia(Pasajero pasajero, LocalDate fecha) {
         int count = 0;
@@ -62,13 +62,14 @@ public class TicketService {
         return count;
     }
 
-    // VENDER TICKET
+    //  VENDER TICKET
 
+    // Sobrecarga 1: vende con fecha de hoy
     public Ticket venderTicket(Pasajero pasajero, Vehiculo vehiculo) {
         return venderTicket(pasajero, vehiculo, LocalDate.now());
     }
 
-    // SOBRECARGA: vender con fecha específica (anticipa Req 4 - reservas)
+    // Sobrecarga 2: vende con fecha específica (anticipa Req 4)
     public Ticket venderTicket(Pasajero pasajero, Vehiculo vehiculo, LocalDate fecha) {
 
         if (!vehiculo.isDisponible()) {
@@ -111,7 +112,12 @@ public class TicketService {
         return tickets;
     }
 
-    //  ESTADÍSTICAS (Actividad 12)
+    // Alias para el Líder — usado en reportes desde la View
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    //  ESTADÍSTICAS
 
     // 1. Total recaudado
     public double calcularTotalRecaudado() {
