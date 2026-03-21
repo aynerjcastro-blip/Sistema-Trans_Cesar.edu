@@ -1,7 +1,5 @@
 package cesar.sistema_transcesar.services;
 import cesar.sistema_transcesar.model.Ticket;
-import cesar.sistema_transcesar.model.personas.Pasajero;
-import cesar.sistema_transcesar.model.vehiculos.Vehiculo;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
