@@ -1,0 +1,3 @@
+ABC123,Valledupar-Bogota,Buseta,true
+XYZ456,Bogota-Medellin,Bus,true
+DEF789,Medellin-Cali,MicroBus,true

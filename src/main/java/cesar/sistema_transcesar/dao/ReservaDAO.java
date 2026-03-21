@@ -33,15 +33,14 @@ public class ReservaDAO {
             String linea;
             while ((linea = br.readLine()) != null) {
                 if (linea.isBlank()) continue;
-                String[] d = linea.split(";");
-
-                String codigo         = d[0];
-                String cedulaPasajero = d[1];
-                String placaVehiculo  = d[2];
+                String[] d = linea.split(",");
+                if (d.length < 6) continue; // protección
+                String codigo           = d[0];
+                String cedulaPasajero   = d[1];
+                String placaVehiculo    = d[2];
                 LocalDate fechaCreacion = LocalDate.parse(d[3]);
-                LocalDate fechaViaje  = LocalDate.parse(d[4]);
-                String estado         = d[5];
-
+                LocalDate fechaViaje    = LocalDate.parse(d[4]);
+                String estado           = d[5];
                 Pasajero pasajero = buscarPasajero(cedulaPasajero, pasajeros);
                 Vehiculo vehiculo = buscarVehiculo(placaVehiculo, vehiculos);
 

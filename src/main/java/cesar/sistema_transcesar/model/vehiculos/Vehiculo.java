@@ -137,9 +137,9 @@ public abstract class Vehiculo implements Imprimible {
 
     @Override
     public String toString() {
-        return placa + ";" +
-                ruta.getCodigo() + ";" +
-                getClass().getSimpleName() + ";" +
+        return placa + "," +
+                ruta.getCodigo() + "," +
+                getClass().getSimpleName() + "," +
                 disponible;
     }
     private Conductor conductor;

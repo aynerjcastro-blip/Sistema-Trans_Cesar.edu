@@ -27,7 +27,7 @@ public class VehiculoDAO {
         try(BufferedReader br = new BufferedReader(new FileReader(ARCHIVO))){
             String linea;
             while((linea = br.readLine()) != null){
-                String[] datos = linea.split(";");
+                String[] datos = linea.split(",");
                 if(datos.length == 4){
                     String placa = datos[0];
                     String codigoRuta = datos[1];

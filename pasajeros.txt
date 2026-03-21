@@ -1,0 +1,3 @@
+1064710408,Jose Castro,regular,2000-07-05
+1064710409,Maria Lopez,estudiante,2005-03-15
+1064710410,Carlos Perez,adultomayor,1950-01-20

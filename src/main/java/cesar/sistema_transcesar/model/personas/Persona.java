@@ -63,9 +63,9 @@ public abstract class Persona implements Imprimible {
     }
 
     @Override
-    public void imprimirDetalle(){
-        System.out.println("Identificación: " + identificacion
-        + "Nombre: " + nombre
-        + "Edad: " + calcularEdad());
+    public void imprimirDetalle() {
+        System.out.println("Identificacion: " + identificacion 
+            + " | Nombre: " + nombre
+            + " | Edad: " + calcularEdad());
     }
 }

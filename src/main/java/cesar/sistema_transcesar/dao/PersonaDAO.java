@@ -67,7 +67,8 @@ public class PersonaDAO {
             pw.println(
                     pasajero.getIdentificacion() + "," +
                             pasajero.getNombre() + "," +
-                            tipo
+                                tipo + "," +
+                                    pasajero.getFechaNacimiento()
             );
         } catch (IOException e) {
             System.out.println("Error al guardar pasajero: " + e.getMessage());

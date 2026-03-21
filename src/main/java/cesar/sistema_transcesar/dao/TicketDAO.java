@@ -19,9 +19,9 @@ public class TicketDAO {
             for (Ticket t : tickets) {
                 bw.write(
                         t.getId() + ";" +
-                                t.getPasajero().getIdentificacion() + ";" +
-                                t.getVehiculo().getPlaca() + ";" +
-                                t.getFecha() + ";" +
+                                t.getPasajero().getIdentificacion() + "," +
+                                t.getVehiculo().getPlaca() + "," +
+                                t.getFecha() + "," +
                                 t.getTarifaBase()
                 );
                 bw.newLine();
@@ -32,34 +32,30 @@ public class TicketDAO {
     }
 
     // CARGAR
-    public List<Ticket> cargar(List<Pasajero> pasajeros, List<Vehiculo> vehiculos) {
+        public List<Ticket> cargar(List<Pasajero> pasajeros, List<Vehiculo> vehiculos) {
         List<Ticket> tickets = new ArrayList<>();
-
         try (BufferedReader br = new BufferedReader(new FileReader(ARCHIVO))) {
             String linea;
-
             while ((linea = br.readLine()) != null) {
-                String[] datos = linea.split(";");
-
+                if (linea.isBlank()) continue;
+                String[] datos = linea.split(",");
+                if (datos.length < 5) continue;
                 int id = Integer.parseInt(datos[0]);
                 String cedula = datos[1];
                 String placa = datos[2];
                 LocalDate fecha = LocalDate.parse(datos[3]);
                 double tarifa = Double.parseDouble(datos[4]);
-
                 Pasajero pasajero = buscarPasajero(cedula, pasajeros);
                 Vehiculo vehiculo = buscarVehiculo(placa, vehiculos);
-
                 if (pasajero != null && vehiculo != null) {
-                    Ticket ticket = new Ticket(id, pasajero, vehiculo, fecha, tarifa);
-                    tickets.add(ticket);
+                    tickets.add(new Ticket(id, pasajero, vehiculo, fecha, tarifa));
                 }
             }
-
+        } catch (FileNotFoundException e) {
+            // Archivo no existe aun, se creara al vender el primer ticket
         } catch (IOException e) {
             System.out.println("Error al cargar tickets: " + e.getMessage());
         }
-
         return tickets;
     }
 

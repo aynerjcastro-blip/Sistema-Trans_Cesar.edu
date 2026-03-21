@@ -84,7 +84,7 @@ public class Ticket implements Imprimible, Calculable {
 
         @Override
     public String toString() {
-        return id + ";" + fecha + ";" + pasajero.getIdentificacion() + ";" + vehiculo.getPlaca() + ";" + tarifaBase + ";" + totalPagado;
+        return id + "," + fecha + "," + pasajero.getIdentificacion() + "," + vehiculo.getPlaca() + "," + tarifaBase + "," + totalPagado;
     }
     
     @Override   
