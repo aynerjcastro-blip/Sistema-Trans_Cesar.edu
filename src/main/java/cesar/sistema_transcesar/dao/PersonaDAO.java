@@ -1,4 +1,4 @@
-package cesar.sistema_transcesar.model.dao;
+package cesar.sistema_transcesar.dao;
 
 import cesar.sistema_transcesar.model.personas.*;
 

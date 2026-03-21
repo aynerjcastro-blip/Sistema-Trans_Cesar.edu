@@ -1,6 +1,6 @@
 package cesar.sistema_transcesar.services;
 
-import cesar.sistema_transcesar.model.dao.PersonaDAO;
+import cesar.sistema_transcesar.dao.PersonaDAO;
 import cesar.sistema_transcesar.model.personas.*;
 
 import java.time.LocalDate;

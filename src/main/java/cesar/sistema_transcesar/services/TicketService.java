@@ -1,7 +1,7 @@
 package cesar.sistema_transcesar.services;
 
 import cesar.sistema_transcesar.model.Ticket;
-import cesar.sistema_transcesar.model.dao.TicketDAO;
+import cesar.sistema_transcesar.dao.TicketDAO;
 import cesar.sistema_transcesar.model.personas.Pasajero;
 import cesar.sistema_transcesar.model.vehiculos.Vehiculo;
 
