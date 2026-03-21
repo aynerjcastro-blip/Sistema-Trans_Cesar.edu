@@ -297,8 +297,39 @@ static void reportePorFecha() {
     }
 }
 
-// TODO: Actividad 15
-static void reportePorTipoVehiculo() {}
+
+static void reportePorTipoVehiculo() {
+    System.out.println("""
+            Tipo de vehiculo:
+            1. Buseta
+            2. MicroBus
+            3. Bus
+            """);
+    System.out.print("Seleccione tipo: ");
+    try {
+        int opcion = Integer.parseInt(consola.nextLine());
+        String tipo;
+        switch (opcion) {
+            case 1: tipo = "Buseta"; break;
+            case 2: tipo = "MicroBus"; break;
+            case 3: tipo = "Bus"; break;
+            default:
+                System.out.println("Opcion no valida.");
+                return;
+        }
+        List<Ticket> resultado = reporteService.reportePorTipoVehiculo(tipo);
+        if (resultado.isEmpty()) {
+            System.out.println("No hay tickets para ese tipo de vehiculo.");
+        } else {
+            System.out.println("Tickets vendidos en " + tipo + ":");
+            for (Ticket t : resultado) {
+                t.imprimirDetalle();
+            }
+        }
+    } catch (NumberFormatException e) {
+        System.out.println("Error: debe ingresar un numero valido.");
+    }
+}
 
 // TODO: Actividad 16
 static void reportePorTipoPasajero() {}
