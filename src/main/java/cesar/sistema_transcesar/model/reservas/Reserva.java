@@ -78,4 +78,13 @@ public class Reserva {
         + "\nEstado: " + estado);
     }
 
+    @Override
+    public String toString() {
+        return codigo + ";" +
+                pasajero.getCedula() + ";" +
+                vehiculo.getPlaca() + ";" +
+                fechaCreacion + ";" +
+                fechaViaje + ";" +
+                estado;
+    }
 }
