@@ -1,5 +1,7 @@
 package cesar.sistema_transcesar.model.personas;
 
+import cesar.sistema_transcesar.model.personas.Pasajero;
+
 public class PasajeroEstudiante extends Pasajero {
 
     public PasajeroEstudiante(String id, String nombre) {
@@ -10,10 +12,4 @@ public class PasajeroEstudiante extends Pasajero {
     public double calcularDescuento() {
         return 0.15;
     }
-
-    @Override
-    public String toString() {
-        return super.toString() + ";ESTUDIANTE";
-    }
-
 }

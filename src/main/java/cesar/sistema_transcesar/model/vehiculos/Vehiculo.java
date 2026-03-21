@@ -19,6 +19,49 @@ public abstract class Vehiculo implements Imprimible {
         this.tarifaBase = tarifaBase;
         this.disponible = disponible;
     }
+    //Sobrcarga de construtores
+    public Vehiculo(String placa, Ruta ruta, int capacidadMaxima, int  pasajerosActuales, double tarifaBase) {
+        this.placa = placa;
+        this.ruta = ruta;
+        this.capacidadMaxima = capacidadMaxima;
+        this.pasajerosActuales = pasajerosActuales; 
+        this.tarifaBase = tarifaBase;
+    
+    }
+
+    public Vehiculo(String placa, Ruta ruta, int capacidadMaxima, int pasajerosActuales) {
+        this.placa = placa;
+        this.ruta = ruta;
+        this.capacidadMaxima = capacidadMaxima;
+        this.pasajerosActuales = pasajerosActuales;
+    }
+
+    public Vehiculo(String placa, Ruta ruta, int capacidadMaxima) {
+        this.placa = placa;
+        this.ruta = ruta;
+        this.capacidadMaxima = capacidadMaxima;
+    }
+
+    public Vehiculo(String placa, Ruta ruta) {
+        this.placa = placa;
+        this.ruta = ruta;
+    }
+
+    public Vehiculo(String placa, Ruta ruta, boolean disponible) {
+        this.placa = placa;
+        this.ruta = ruta;
+        this.disponible = disponible;
+    }
+    
+    
+    public Vehiculo(String placa) {
+        this.placa = placa;
+    }
+    
+
+    public Vehiculo(){
+        
+    }
 
     public String getPlaca() {
         return placa;
@@ -87,9 +130,7 @@ public abstract class Vehiculo implements Imprimible {
     public String toString() {
         return placa + ";" +
                 ruta.getCodigo() + ";" +
-                capacidadMaxima + ";" +
-                pasajerosActuales + ";" +
-                tarifaBase + ";" +
+                getClass().getSimpleName() + ";" +
                 disponible;
     }
 }
