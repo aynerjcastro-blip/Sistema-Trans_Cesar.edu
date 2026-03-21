@@ -3,10 +3,17 @@ package cesar.sistema_transcesar.view;
 import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.List;
+
+
+import cesar.sistema_transcesar.services.VehiculoService;
+import cesar.sistema_transcesar.model.vehiculos.Vehiculo;;
 
 public class Main {
 
     static Scanner consola = new Scanner(System.in);
+    static VehiculoService vehiculoService = new VehiculoService();
+
 
     public static void main(String[] args) {
         int opcion;
@@ -51,14 +58,20 @@ public class Main {
                 3. Bus
                 """);
                 try{
+                    System.out.println("Tipo:");
                     var tipo = Integer.parseInt(consola.nextLine());
         
                     System.out.println("Placa: ");
                     var placa = consola.nextLine();
 
                     System.out.println("Ruta: ");
-                    var estado = Integer.parseInt(consola.nextLine());
-                    //TODO: VehiculoService.registrar(tipo,placa,estado
+                    var ruta = consola.nextLine();
+
+                    System.out.println("Estado: ");
+                    var disponible=  Boolean.parseBoolean(consola.nextLine());
+
+                    vehiculoService.registrar(tipo, placa, ruta, disponible);
+
                 }catch(InputMismatchException e){
                     System.out.println("Error: Debe ingresar un numero valido."+e.getMessage());
                     e.printStackTrace();
@@ -71,8 +84,14 @@ public class Main {
     
     static void listarVehiculos() {
         System.out.println("\n** Listar Vehiculos **");
-        //TODO: VehiculoService.listar();
-        System.out.println("pendiente a integracion con service");
+        List<Vehiculo> lista = vehiculoService.listar();
+        if(lista.isEmpty()){
+            System.out.println("No hay vehiculos registrados.");
+        }else{
+            for (Vehiculo v : lista) {
+                v.imprimirDetalle();
+            }
+        }
     }
 
     
@@ -174,6 +193,40 @@ public class Main {
     }
     
 
-    // TODO: Actividad 12
-    static void verEstadisticas() {}
+    
+    static void verEstadisticas() {
+        System.out.println("\n** Estadisticas del Sistema**");
+        System.out.println("1. Total recaudado");
+        System.out.println("2. Pasajeros por tipo");
+        System.out.println("3. Vehiculo con mas tickets vendidos");
+        System.out.println("Seleccione una opcion: ");
+        try{
+            int opcion = Integer.parseInt(consola.nextLine());
+            switch (opcion) {
+                case 1: mostrarTotalRecaudado();break;
+                case 2: mostrarPasajerosPorTipo();break;
+                case 3: mostrarVehiculoTop();break;            
+                default: System.out.println("Opcion no invalida.");break;
+            }
+        }catch(InputMismatchException e){
+            consola.nextLine();
+            System.out.println("Error: debe ingresar un numero valido: "+e.getMessage());
+            e.printStackTrace();            
+        }
+    }
+
+    static void mostrarTotalRecaudado() {
+        // TODO: ticketService.calcularTotalRecaudado()
+        System.out.println("(pendiente integracion con TicketService)");
+    }
+
+    static void mostrarPasajerosPorTipo() {
+        // TODO: ticketService.contarPasajerosPorTipo()
+        System.out.println("(pendiente integracion con TicketService)");
+    }
+
+    static void mostrarVehiculoTop() {
+        // TODO: ticketService.obtenerVehiculoTop()
+        System.out.println("(pendiente integracion con TicketService)");
+    }
 }

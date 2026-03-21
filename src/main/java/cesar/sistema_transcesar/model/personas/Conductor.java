@@ -27,6 +27,10 @@ public class Conductor extends Persona {
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
+    /*toString para escribir correctamente en Filewriter , leer ; */
+    public String toString() {
+        return getCedula() + ";" + getNombre() + ";" + licencia + ";" + categoria;
+    }
 
     @Override
     public void imprimirDetalle() {
