@@ -88,5 +88,36 @@ public class ReservaService {
         return historial;
     }
     
-    
+    public void convertirEnTicket(String codigo){
+        for (Reserva r : reservas) {
+            if(r.getCodigo().equalsIgnoreCase(codigo)){
+            if(!r.getEstado().equals("Activa")){
+                throw new IllegalArgumentException("Solo se pueden convertir reservas activas");
+            }
+            r.setEstado("Corregida");
+            dao.guardar(reservas);
+            System.out.println("Reserva convertidad en ticket correctamente.");
+            return;
+        }
+        throw new IllegalArgumentException("No existe ninguna reserva con ese codigo: "+codigo);
+        }
+    }
+
+    public void verificarVencidas() {
+        int canceladas = 0;
+        LocalDate hoy = LocalDate.now();
+        for (Reserva r : reservas) {
+            if (r.getEstado().equals("Activa")
+                && r.getFechaCreacion().isBefore(hoy.minusDays(1))) {
+                r.setEstado("Cancelada");
+                canceladas++;
+            }
+        }
+        if (canceladas > 0) {
+            dao.guardar(reservas);
+            System.out.println(canceladas + " reserva(s) vencidas canceladas automaticamente.");
+        }
+    }
+
+
 }
