@@ -13,8 +13,6 @@ public class ReservaService {
     private ReservaDAO dao;
     private TicketService TicketService;
     private VehiculoService vehiculoService;
-    private Vehiculo vehiculos;
-    private Pasajero pasajeros;
     private int contador;
 
     public ReservaService(TicketService ticketService, VehiculoService vehiculoService,List<Pasajero> pasajeros ,List<Vehiculo>vehiculos){
@@ -27,18 +25,18 @@ public class ReservaService {
     public void crearReserva(Pasajero pasajero, Vehiculo vehiculo, LocalDate fechaViaje) {
   // Validacion 1: cupos disponibles contando tickets + reservas activas
         long reservasActivas = reservas.stream()
-            .filter(r -> r.getVehiculo().getPlaca().equalsIgnoreCase(vehiculos.getPlaca())
+            .filter(r -> r.getVehiculo().getPlaca().equalsIgnoreCase(vehiculo.getPlaca())
                     && r.getEstado().equals("Activa"))
             .count();
-        int ocupados = vehiculos.getPasajerosActuales() + (int) reservasActivas;
+        int ocupados = vehiculo.getPasajerosActuales() + (int) reservasActivas;
         if (ocupados >= vehiculo.getCapacidadMaxima()) {
             throw new IllegalArgumentException("El vehiculo no tiene cupos disponibles.");
         }
 
         // Validacion 2: pasajero no puede tener dos reservas activas mismo vehiculo misma fecha
         for (Reserva r : reservas) {
-            if (r.getPasajero().getIdentificacion().equalsIgnoreCase(pasajeros.getIdentificacion())
-                && r.getVehiculo().getPlaca().equalsIgnoreCase(vehiculos.getPlaca())
+            if (r.getPasajero().getIdentificacion().equalsIgnoreCase(pasajero.getIdentificacion())
+                && r.getVehiculo().getPlaca().equalsIgnoreCase(vehiculo.getPlaca())
                 && r.getFechaViaje().equals(fechaViaje)
                 && r.getEstado().equals("Activa")) {
                 throw new IllegalArgumentException(
@@ -47,7 +45,7 @@ public class ReservaService {
         }
 
         String codigo = "RES-" + contador++;
-        Reserva nueva = new Reserva(codigo, pasajeros, vehiculos,LocalDate.now(), fechaViaje, "Activa");
+        Reserva nueva = new Reserva(codigo, pasajero, vehiculo,LocalDate.now(), fechaViaje, "Activa");
         reservas.add(nueva);
         dao.guardar(reservas);
         System.out.println("Reserva creada exitosamente. Codigo: " + codigo);

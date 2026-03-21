@@ -10,6 +10,7 @@ import cesar.sistema_transcesar.services.PersonaService;
 import cesar.sistema_transcesar.services.TicketService;
 import cesar.sistema_transcesar.services.VehiculoService;
 import cesar.sistema_transcesar.services.ReporteService;
+import cesar.sistema_transcesar.services.ReservaService;
 import cesar.sistema_transcesar.model.Ticket;
 import cesar.sistema_transcesar.model.personas.Conductor;
 import cesar.sistema_transcesar.model.personas.Pasajero;
@@ -25,6 +26,13 @@ public class Main {
         vehiculoService.listar()
     );
     static ReporteService reporteService = new ReporteService(ticketService);
+
+    static ReservaService reservaService = new ReservaService(
+    ticketService,
+    vehiculoService,
+    personaService.listarPasajeros(),
+    vehiculoService.listar()
+    );
 
     public static void main(String[] args) {
         int opcion;
