@@ -38,9 +38,9 @@ public class PersonaService {
         return personaDAO.cargarConductores();
     }
 
-    public Conductor buscarConductor(String cedula) {
+    public Conductor buscarConductor(String identificacion) {
         for (Conductor c : personaDAO.cargarConductores()) {
-            if (c.getCedula().equalsIgnoreCase(cedula)) {
+            if (c.getIdentificacion().equalsIgnoreCase(identificacion)) {
                 return c;
             }
         }
@@ -97,7 +97,7 @@ public class PersonaService {
 
     public Pasajero buscarPasajero(String identificacion) {
         for (Pasajero p : personaDAO.cargarPasajeros()) {
-            if (p.getCedula().equalsIgnoreCase(identificacion)) {
+            if (p.getIdentificacion().equalsIgnoreCase(identificacion)) {
                 return p;
             }
         }

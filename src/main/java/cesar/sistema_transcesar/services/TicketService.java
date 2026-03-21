@@ -54,7 +54,7 @@ public class TicketService {
     private int contarTicketsPorDia(Pasajero pasajero, LocalDate fecha) {
         int count = 0;
         for (Ticket t : tickets) {
-            if (t.getPasajero().getCedula().equals(pasajero.getCedula())
+            if (t.getPasajero().getIdentificacion().equals(pasajero.getIdentificacion())
                     && t.getFecha().equals(fecha)) {
                 count++;
             }
