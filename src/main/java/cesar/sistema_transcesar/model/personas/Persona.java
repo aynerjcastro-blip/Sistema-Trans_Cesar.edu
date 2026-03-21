@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.time.Period;
 
 public abstract class Persona implements Imprimible {
-    private String cedula;
+    private String identificacion;
     private String nombre;
     private LocalDate fechaNacimiento;
 
@@ -13,23 +13,23 @@ public abstract class Persona implements Imprimible {
 
     }
 
-    public Persona(String cedula, String nombre) {
-        this.cedula = cedula;
+    public Persona(String identificacion, String nombre) {
+        this.identificacion = identificacion;
         this.nombre = nombre;
     }
 
-    public Persona(String cedula, String nombre, LocalDate fechaNacimiento) {
-        this.cedula = cedula;
+    public Persona(String identificacion, String nombre, LocalDate fechaNacimiento) {
+        this.identificacion = identificacion;
         this.nombre = nombre;
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getCedula() {
-        return cedula;
+    public String getIdentificacion() {
+        return identificacion;
     }
 
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
     }
 
     public String getNombre() {
@@ -59,7 +59,7 @@ public abstract class Persona implements Imprimible {
 
     @Override
     public void imprimirDetalle(){
-        System.out.println("Cedula:" + cedula
+        System.out.println("Identificación:" + identificacion
         + "Nombre: " + nombre
         + "Edad: " + calcularEdad());
     }

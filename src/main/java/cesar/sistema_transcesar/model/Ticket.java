@@ -84,14 +84,14 @@ public class Ticket implements Imprimible, Calculable {
 
         @Override
     public String toString() {
-        return id + ";" + fecha + ";" + pasajero.getCedula() + ";" + vehiculo.getPlaca() + ";" + tarifaBase + ";" + totalPagado;
+        return id + ";" + fecha + ";" + pasajero.getIdentificacion() + ";" + vehiculo.getPlaca() + ";" + tarifaBase + ";" + totalPagado;
     }
     
     @Override   
     public void imprimirDetalle() {
         System.out.println("===== TICKET #" + id + " =====");
         System.out.println("Fecha: " + fecha);
-        System.out.println("Pasajero: " + pasajero.getNombre() + " | Cedula: " + pasajero.getCedula());
+        System.out.println("Pasajero: " + pasajero.getNombre() + " | Identificacion: " + pasajero.getIdentificacion());
         System.out.println("Vehiculo: " + vehiculo.getPlaca() + " | Ruta: " + vehiculo.getRuta());
         System.out.println("Tarifa Base: $" + tarifaBase);
         System.out.println("Descuento: " + (pasajero.calcularDescuento() * 100) + "%");

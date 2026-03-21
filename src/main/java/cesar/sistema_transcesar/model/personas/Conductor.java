@@ -29,12 +29,12 @@ public class Conductor extends Persona {
     }
     /*toString para escribir correctamente en Filewriter , leer ; */
     public String toString() {
-        return getCedula() + ";" + getNombre() + ";" + licencia + ";" + categoria;
+        return getIdentificacion() + ";" + getNombre() + ";" + licencia + ";" + categoria;
     }
 
     @Override
     public void imprimirDetalle() {
-        System.out.println("Cedula: " + getCedula()
+        System.out.println("Identificacion: " + getIdentificacion()
                 + " | Nombre: " + getNombre()
                 + " | Licencia: " + licencia
                 + " | Categoria: " + categoria);

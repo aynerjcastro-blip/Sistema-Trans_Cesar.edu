@@ -19,7 +19,7 @@ public class TicketDAO {
             for (Ticket t : tickets) {
                 bw.write(
                         t.getId() + ";" +
-                                t.getPasajero().getCedula() + ";" +
+                                t.getPasajero().getIdentificacion() + ";" +
                                 t.getVehiculo().getPlaca() + ";" +
                                 t.getFecha() + ";" +
                                 t.getTarifaBase()
@@ -66,7 +66,7 @@ public class TicketDAO {
     // BUSCAR PASAJERO
     private Pasajero buscarPasajero(String cedula, List<Pasajero> pasajeros) {
         for (Pasajero p : pasajeros) {
-            if (p.getCedula().equals(cedula)) {
+            if (p.getIdentificacion().equals(cedula)) {
                 return p;
             }
         }

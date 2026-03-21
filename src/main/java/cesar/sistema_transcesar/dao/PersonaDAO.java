@@ -21,7 +21,7 @@ public class PersonaDAO {
             // CORRECCIÓN: antes solo guardaba cedula y nombre.
             // Ahora guarda cedula,nombre,licencia,categoria
             pw.println(
-                    conductor.getCedula()   + "," +
+                    conductor.getIdentificacion()   + "," +
                             conductor.getNombre()   + "," +
                             conductor.getLicencia() + "," +
                             conductor.getCategoria()
@@ -64,7 +64,7 @@ public class PersonaDAO {
 
         try (PrintWriter pw = new PrintWriter(new FileWriter(ARCHIVO_PASAJEROS, true))) {
             pw.println(
-                    pasajero.getCedula() + "," +
+                    pasajero.getIdentificacion() + "," +
                             pasajero.getNombre() + "," +
                             tipo
             );

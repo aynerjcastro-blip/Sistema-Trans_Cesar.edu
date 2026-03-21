@@ -81,7 +81,7 @@ public class Reserva {
     @Override
     public String toString() {
         return codigo + ";" +
-                pasajero.getCedula() + ";" +
+                pasajero.getIdentificacion() + ";" +
                 vehiculo.getPlaca() + ";" +
                 fechaCreacion + ";" +
                 fechaViaje + ";" +
