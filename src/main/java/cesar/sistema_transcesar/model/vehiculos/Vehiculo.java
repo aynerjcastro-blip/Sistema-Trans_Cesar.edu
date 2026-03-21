@@ -81,4 +81,15 @@ public abstract class Vehiculo implements Imprimible {
         + "Tarifa Base: " + tarifaBase
         + "Disponible: " + disponible);
     }
+
+    @Override
+    public String toString() {
+        return placa + ";" +
+                ruta + ";" +
+                capacidadMaxima + ";" +
+                pasajerosActuales + ";" +
+                tarifaBase + ";" +
+                disponible;
+    }
+
 }

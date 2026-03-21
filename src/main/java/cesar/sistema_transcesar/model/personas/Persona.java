@@ -29,7 +29,13 @@ public abstract class Persona implements Imprimible {
 
     @Override
     public void imprimirDetalle(){
-        System.out.println("Cedula:" + cedula
-        + "Nombre: " + nombre);
+        System.out.println("\nCedula: " + cedula
+        + "\nNombre: " + nombre);
+    }
+
+    @Override
+    public String toString() {
+        return cedula + ";" +
+                nombre;
     }
 }
