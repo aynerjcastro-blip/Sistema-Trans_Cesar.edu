@@ -1,6 +1,7 @@
 package cesar.sistema_transcesar.model.vehiculos;
 
 import cesar.sistema_transcesar.model.interfaces.Imprimible;
+import cesar.sistema_transcesar.model.personas.Conductor;
 
 public abstract class Vehiculo implements Imprimible {
     private String placa;
@@ -9,14 +10,16 @@ public abstract class Vehiculo implements Imprimible {
     private int pasajerosActuales;
     private double tarifaBase;
     private boolean disponible;
+    private Conductor conductor;
 
-    public Vehiculo(String placa, String ruta, int capacidadMaxima, int pasajerosActuales, double tarifaBase, boolean disponible) {
+    public Vehiculo(String placa, String ruta, int capacidadMaxima, int pasajerosActuales, double tarifaBase, boolean disponible, Conductor conductor) {
         this.placa = placa;
         this.ruta = ruta;
         this.capacidadMaxima = capacidadMaxima;
         this.pasajerosActuales = pasajerosActuales;
         this.tarifaBase = tarifaBase;
         this.disponible = disponible;
+        this.conductor = conductor;
     }
 
     public String getPlaca() {
@@ -65,6 +68,14 @@ public abstract class Vehiculo implements Imprimible {
 
     public void setDisponible(boolean disponible) {
         this.disponible = disponible;
+    }
+
+    public Conductor getConductor() {
+        return conductor;
+    }
+
+    public void setConductor(Conductor conductor) {
+        this.conductor = conductor;
     }
 
     public int getCuposDisponibles() {
