@@ -41,7 +41,7 @@ public class VehiculoDAO {
                 }
             }
         }catch(FileNotFoundException e){
-      
+            
         }catch(IOException e){
             System.out.println("Error al cargar el archivo: "+e.getMessage());
             e.printStackTrace();
