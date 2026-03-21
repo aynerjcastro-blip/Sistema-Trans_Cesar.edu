@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d6bdccf8-0fe3-4785-97f9-8a6025f5ae89" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroAdultoMayor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroAdultoMayor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroEstudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroEstudiante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroRegular.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/PasajeroRegular.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/personas/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/rutas/Ruta.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/rutas/Ruta.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Vehiculo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cesar/sistema_transcesar/model/vehiculos/Vehiculo.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
