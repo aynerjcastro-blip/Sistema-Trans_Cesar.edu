@@ -58,7 +58,7 @@ public class ReservaDAO {
 
     private Pasajero buscarPasajero(String cedula, List<Pasajero> pasajeros) {
         for (Pasajero p : pasajeros) {
-            if (p.getCedula().equals(cedula)) return p;
+            if (p.getCedula().equalsIgnoreCase(cedula)) return p;
         }
         return null;
     }
