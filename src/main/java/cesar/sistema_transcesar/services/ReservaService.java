@@ -4,6 +4,7 @@ import cesar.sistema_transcesar.model.vehiculos.Vehiculo;
 import cesar.sistema_transcesar.model.reservas.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import cesar.sistema_transcesar.dao.ReservaDAO;
 
@@ -68,5 +69,24 @@ public class ReservaService {
         }
         throw new IllegalArgumentException("No existe una reserva con el codigo: " + codigo);
     }
+
+    public List<Reserva> listarActivas() {
+        List<Reserva> activas = new ArrayList<>();
+        for (Reserva r : reservas) {
+            if (r.getEstado().equals("Activa")) activas.add(r);
+        }
+        return activas;
+    }
+
+    public List<Reserva> historialPasajero(String identificacion) {
+        List<Reserva> historial = new ArrayList<>();
+        for (Reserva r : reservas) {
+            if (r.getPasajero().getIdentificacion().equalsIgnoreCase(identificacion)) {
+                historial.add(r);
+            }
+        }
+        return historial;
+    }
+    
     
 }
