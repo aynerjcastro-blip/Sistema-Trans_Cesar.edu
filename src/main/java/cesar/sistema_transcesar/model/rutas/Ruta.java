@@ -18,6 +18,14 @@ public class Ruta implements Imprimible {
         this.tiempoEstimadoMin = tiempoEstimadoMin;
     }
 
+    public Ruta(String codigo) {
+    this.codigo = codigo;
+    this.origen = "";
+    this.destino = "";
+    this.distanciaKm = 0;
+    this.tiempoEstimadoMin = 0;
+}
+
     public String getCodigo() {
         return codigo;
     }

@@ -6,4 +6,7 @@ public class Bus extends Vehiculo {
     public Bus(String placa, Ruta ruta, boolean disponible){
         super(placa, ruta, 45, 0, 15000, disponible);
     }
+    public Bus(String placa, String ruta, boolean disponible) {
+    super(placa, ruta, 45, 15000, disponible);
+}
 }
