@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import cesar.sistema_transcesar.model.rutas.Ruta;
 import cesar.sistema_transcesar.model.vehiculos.*;
 
 public class VehiculoDAO {
@@ -29,11 +30,12 @@ public class VehiculoDAO {
                 String[] datos = linea.split(";");
                 if(datos.length == 4){
                     String placa = datos[0];
-                    String ruta = datos[1];
+                    String codigoRuta = datos[1];
+                    Ruta ruta = new Ruta(codigoRuta, "", "", 0, 0);
                     String tipo = datos[2];
                     boolean disponible = Boolean.parseBoolean(datos[3]);
                     switch (tipo) {
-                        case "Buseta" -> {vehiculos.add(new Buseta(placa, ruta, disponible));break;}
+                        case "Buseta" -> {vehiculos.add(new Buseta(placa,ruta, disponible));break;}
                         case "MicroBus" -> {vehiculos.add(new MicroBus(placa, ruta, disponible));break;}
                         case "Bus" -> {vehiculos.add(new Bus(placa, ruta, disponible));break;}
                         default -> {System.out.println("Tipo de vehículo no válido: " + tipo);}

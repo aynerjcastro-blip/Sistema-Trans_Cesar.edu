@@ -1,16 +1,17 @@
 package cesar.sistema_transcesar.model.vehiculos;
 
 import cesar.sistema_transcesar.model.interfaces.Imprimible;
+import cesar.sistema_transcesar.model.rutas.Ruta;
 
 public abstract class Vehiculo implements Imprimible {
     private String placa;
-    private String ruta;
+    private Ruta ruta;
     private int capacidadMaxima;
     private int pasajerosActuales;
     private double tarifaBase;
     private boolean disponible;
 
-    public Vehiculo(String placa, String ruta, int capacidadMaxima, int pasajerosActuales, double tarifaBase, boolean disponible) {
+    public Vehiculo(String placa, Ruta ruta, int capacidadMaxima, int pasajerosActuales, double tarifaBase, boolean disponible) {
         this.placa = placa;
         this.ruta = ruta;
         this.capacidadMaxima = capacidadMaxima;
@@ -19,7 +20,7 @@ public abstract class Vehiculo implements Imprimible {
         this.disponible = disponible;
     }
     //Sobrcarga de construtores
-    public Vehiculo(String placa, String ruta, int capacidadMaxima, int  pasajerosActuales, double tarifaBase) {
+    public Vehiculo(String placa, Ruta ruta, int capacidadMaxima, int  pasajerosActuales, double tarifaBase) {
         this.placa = placa;
         this.ruta = ruta;
         this.capacidadMaxima = capacidadMaxima;
@@ -28,25 +29,25 @@ public abstract class Vehiculo implements Imprimible {
     
     }
 
-    public Vehiculo(String placa, String ruta, int capacidadMaxima, int pasajerosActuales) {
+    public Vehiculo(String placa, Ruta ruta, int capacidadMaxima, int pasajerosActuales) {
         this.placa = placa;
         this.ruta = ruta;
         this.capacidadMaxima = capacidadMaxima;
         this.pasajerosActuales = pasajerosActuales;
     }
 
-    public Vehiculo(String placa, String ruta, int capacidadMaxima) {
+    public Vehiculo(String placa, Ruta ruta, int capacidadMaxima) {
         this.placa = placa;
         this.ruta = ruta;
         this.capacidadMaxima = capacidadMaxima;
     }
 
-    public Vehiculo(String placa, String ruta) {
+    public Vehiculo(String placa, Ruta ruta) {
         this.placa = placa;
         this.ruta = ruta;
     }
 
-    public Vehiculo(String placa,String ruta, boolean disponible) {
+    public Vehiculo(String placa, Ruta ruta, boolean disponible) {
         this.placa = placa;
         this.ruta = ruta;
         this.disponible = disponible;
@@ -70,11 +71,11 @@ public abstract class Vehiculo implements Imprimible {
         this.placa = placa;
     }
 
-    public String getRuta() {
+    public Ruta getRuta() {
         return ruta;
     }
 
-    public void setRuta(String ruta) {
+    public void setRuta(Ruta ruta) {
         this.ruta = ruta;
     }
 
@@ -114,19 +115,22 @@ public abstract class Vehiculo implements Imprimible {
         return capacidadMaxima - pasajerosActuales;
     }
 
-    /*toString para escribir correctamente en Filewriter , leer ; */
-    public String toString() {
-        return placa + ";" + ruta + ";" + getClass().getSimpleName() + ";" + disponible;
+    @Override
+    public void imprimirDetalle(){
+        System.out.println("\nPlaca: " + placa
+                + "\nRuta: " + ruta
+                + "\nCapacidad Maxima: " + capacidadMaxima
+                + "\nPasajeros Actuales: " + pasajerosActuales
+                + "\nCupos disponibles: " + getCuposDisponibles()
+                + "\nTarifa Base: " + tarifaBase
+                + "\nDisponible: " + disponible);
     }
 
     @Override
-    public void imprimirDetalle(){
-        System.out.println("Placa: " + placa
-        + "Ruta: " + ruta
-        + "Capacidad Maxima: " + capacidadMaxima
-        + "Pasajeros Actuales: " + pasajerosActuales
-        + "Cupos disponibles: " + getCuposDisponibles()
-        + "Tarifa Base: " + tarifaBase
-        + "Disponible: " + disponible);
+    public String toString() {
+        return placa + ";" +
+                ruta.getCodigo() + ";" +
+                getClass().getSimpleName() + ";" +
+                disponible;
     }
 }
