@@ -68,4 +68,14 @@ public class Reserva {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public void imprimirDetalle(){
+        System.out.println("\nCodigo: " + codigo
+        + "\nPasajero: " + pasajero
+        + "\nVehiculo: " + vehiculo
+        + "\nFecha de Creacion: " + fechaCreacion
+        + "\nFecha de Viaje: " + fechaViaje
+        + "\nEstado: " + estado);
+    }
+
 }
