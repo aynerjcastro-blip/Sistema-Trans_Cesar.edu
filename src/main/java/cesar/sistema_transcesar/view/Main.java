@@ -1,12 +1,27 @@
 package cesar.sistema_transcesar.view;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.List;
+
+import cesar.sistema_transcesar.services.PersonaService;
+import cesar.sistema_transcesar.services.TicketService;
+import cesar.sistema_transcesar.services.VehiculoService;
+import cesar.sistema_transcesar.model.personas.Conductor;
+import cesar.sistema_transcesar.model.personas.Pasajero;
+import cesar.sistema_transcesar.model.vehiculos.Vehiculo;
 
 public class Main {
 
     static Scanner consola = new Scanner(System.in);
+    static VehiculoService vehiculoService = new VehiculoService();
+    static PersonaService personaService = new PersonaService();
+    static TicketService ticketService = new TicketService(
+        personaService.listarPasajeros(),
+        vehiculoService.listar()
+    );
 
     public static void main(String[] args) {
         int opcion;
@@ -19,8 +34,8 @@ public class Main {
                 case 2: listarVehiculos(); break;
                 case 3: registrarConductor(); break;
                 case 4: listarConductores(); break;
-                case 5: registrarPasajero();break;
-                case 6: listarPasajeros();break;
+                case 5: registrarPasajero(); break;
+                case 6: listarPasajeros(); break;
                 case 7: venderTicket(); break;
                 case 8: verEstadisticas(); break;
                 case 0: System.out.println("Saliendo del sistema..."); break;
@@ -34,146 +49,204 @@ public class Main {
         System.out.println("1. Registrar vehiculo");
         System.out.println("2. Listar vehiculos");
         System.out.println("3. Registrar conductor");
-        System.out.println("4. Registrar pasajero");
-        System.out.println("5. Vender ticket");
-        System.out.println("6. Ver estadisticas");
+        System.out.println("4. Listar conductores");
+        System.out.println("5. Registrar pasajero");
+        System.out.println("6. Listar pasajeros");
+        System.out.println("7. Vender ticket");
+        System.out.println("8. Ver estadisticas");
         System.out.println("0. Salir");
         System.out.print("Selecciona una opcion: ");
     }
 
-
     static void registrarVehiculo() {
-        System.out.println("\n**Registrar vehiculo**");
+        System.out.println("\n** Registrar Vehiculo **");
         System.out.println("""
                 Tipo:
                 1. Buseta
                 2. MicroBus
                 3. Bus
                 """);
-                try{
-                    var tipo = Integer.parseInt(consola.nextLine());
-        
-                    System.out.println("Placa: ");
-                    var placa = consola.nextLine();
+        try {
+            System.out.print("Tipo: ");
+            var tipo = Integer.parseInt(consola.nextLine());
 
-                    System.out.println("Ruta: ");
-                    var estado = Integer.parseInt(consola.nextLine());
-                    //TODO: VehiculoService.registrar(tipo,placa,estado
-                }catch(InputMismatchException e){
-                    System.out.println("Error: Debe ingresar un numero valido."+e.getMessage());
-                    e.printStackTrace();
-                }catch(IllegalArgumentException e){
-                    System.out.println("Error: "+e.getMessage());
-                    e.printStackTrace();
-                }
+            System.out.print("Placa: ");
+            var placa = consola.nextLine();
+
+            System.out.print("Ruta: ");
+            var ruta = consola.nextLine();
+
+            System.out.print("Disponible (true/false): ");
+            var disponible = Boolean.parseBoolean(consola.nextLine());
+
+            vehiculoService.registrar(tipo, placa, ruta, disponible);
+            System.out.println("Vehiculo registrado correctamente.");
+
+        } catch (InputMismatchException e) {
+            System.out.println("Error: debe ingresar un numero valido.");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
-    
     static void listarVehiculos() {
-        System.out.println("\n** Listar Vehiculos **");
-        //TODO: VehiculoService.listar();
-        System.out.println("pendiente a integracion con service");
+        System.out.println("\n** Lista de Vehiculos **");
+        List<Vehiculo> lista = vehiculoService.listar();
+        if (lista.isEmpty()) {
+            System.out.println("No hay vehiculos registrados.");
+        } else {
+            for (Vehiculo v : lista) {
+                v.imprimirDetalle();
+            }
+        }
     }
 
-    
     static void registrarConductor() {
-        System.out.println("\n** Registrar conductor **");
-        try{
-            System.out.println("Cedula: ");
+        System.out.println("\n** Registrar Conductor **");
+        try {
+            System.out.print("Cedula: ");
             var cedula = consola.nextLine();
 
-            System.out.println("Nombre: ");
+            System.out.print("Nombre: ");
             var nombre = consola.nextLine();
 
-            System.out.println("Numero de Licencia: ");
+            System.out.print("Numero de licencia: ");
             var numeroDeLicencia = consola.nextLine();
 
             System.out.println("""
-                Categoria: 
-                1. B1
-                2. B2
-                3. C1
-                4. C2
-                Seleccione categoria:
-                """);
-                var categoria = Integer.parseInt(consola.nextLine());
+                    Categoria:
+                    1. B1
+                    2. B2
+                    3. C1
+                    4. C2
+                    """);
+            System.out.print("Seleccione categoria: ");
+            var categoria = consola.nextLine();
 
-                //TODO: PersonaService.registrarConductor(cedula,nombre,fechaNacimiento,numeroDeLicencia,categoria)
-        }catch(IllegalArgumentException e){
-            System.out.println("Error: "+e.getMessage());
-            e.printStackTrace();
+            personaService.registrarConductor(cedula, nombre, numeroDeLicencia, categoria);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
         }
     }
-
 
     static void listarConductores() {
-        System.out.println("\n ** Listar Conductores **");
-        //TODO: PersonaService.listarConductores()
-        System.out.println("(pendiente a integracion con service)");
-    }
-
-    
-    static void registrarPasajero(){
-        System.out.println("\n **Registrar Pasajeros **");
-        try{
-            
-        
-        System.out.println("Identificacion: ");
-        var identificacion = consola.nextLine();
-
-        System.out.println("Nombre: ");
-        var nombre = consola.nextLine();
-
-        System.out.println("Fecha de Nacimiento: (dd/mm/aaaa/): ");
-        var fechaNacimiento = consola.nextLine();
-
-        System.out.println("""
-                Tipo:
-                1. Regular
-                2. Estudiante
-                Seleccione tipo: 
-                """);
-                var tipo = Integer.parseInt(consola.nextLine());
-
-                //TODO: PersonaService.registrarPasajero(cedula,nombre,fechaNacimiento,tipo)
-                }catch(IllegalArgumentException e){
-                    System.out.println("Error: "+e.getMessage());
-                    e.printStackTrace();
-                }catch(DateTimeParseException e){
-                    System.out.println("Error: formato de fercha valido. Use dd/mm/yyyy"+e.getMessage());
-                    e.printStackTrace();
-                }
-    }
-    static void listarPasajeros(){
-        System.out.println("\n ** Lista de Pasajeros **");
-        System.out.println("pendiente a integracion con service");
-    }
-
-    
-    static void venderTicket() {
-        System.out.println("\n ** Vender Ticket **");
-
-        System.out.println("Identificacion de pasajero: ");
-        var identificacion = consola.nextLine();
-
-        System.out.println("Placa del vehiculo: ");
-        var placa = consola.nextLine();
-
-        System.out.println("Seleccione una ruta disponible: ");
-        //TODO: mostrar lista de rutas disponibles desde service
-
-        System.out.println("Codigo de la ruta: ");
-        var codigoRuta = consola.nextLine();
-        try {
-            //TODO: TicketService.venderTicket(identificacion,placa,ruta,codigoRuta)
-            System.out.println("Ticket vendido correctamente: ");
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: "+e.getMessage());
-            e.printStackTrace();
+        System.out.println("\n** Lista de Conductores **");
+        List<Conductor> conductores = personaService.listarConductores();
+        if (conductores.isEmpty()) {
+            System.out.println("No hay conductores registrados.");
+        } else {
+            for (Conductor c : conductores) {
+                c.imprimirDetalle();
+            }
         }
     }
-    
 
-    // TODO: Actividad 12
-    static void verEstadisticas() {}
+    static void registrarPasajero() {
+        System.out.println("\n** Registrar Pasajero **");
+        try {
+            System.out.print("Identificacion: ");
+            var identificacion = consola.nextLine();
+
+            System.out.print("Nombre: ");
+            var nombre = consola.nextLine();
+
+            System.out.print("Fecha de nacimiento (dd/MM/yyyy): ");
+            var fechaNacimiento = consola.nextLine();
+
+            System.out.println("""
+                    Tipo:
+                    1. Regular
+                    2. Estudiante
+                    """);
+            System.out.print("Seleccione tipo: ");
+            var tipo = Integer.parseInt(consola.nextLine());
+
+            personaService.registrarPasajero(identificacion, nombre, fechaNacimiento, tipo);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        } catch (DateTimeParseException e) {
+            System.out.println("Error: formato de fecha invalido. Use dd/MM/yyyy");
+        }
+    }
+
+    static void listarPasajeros() {
+        System.out.println("\n** Lista de Pasajeros **");
+        List<Pasajero> pasajeros = personaService.listarPasajeros();
+        if (pasajeros.isEmpty()) {
+            System.out.println("No hay pasajeros registrados.");
+        } else {
+            for (Pasajero p : pasajeros) {
+                p.imprimirDetalle();
+            }
+        }
+    }
+
+    static void venderTicket() {
+        System.out.println("\n** Vender Ticket **");
+        try {
+            System.out.print("Identificacion del pasajero: ");
+            var identificacion = consola.nextLine();
+
+            System.out.print("Placa del vehiculo: ");
+            var placa = consola.nextLine();
+
+            Pasajero pasajero = personaService.buscarPasajero(identificacion);
+            if (pasajero == null) {
+                System.out.println("Error: no existe un pasajero con esa identificacion.");
+                return;
+            }
+
+            Vehiculo vehiculo = vehiculoService.buscarPorPlaca(placa);
+            if (vehiculo == null) {
+                System.out.println("Error: no existe un vehiculo con esa placa.");
+                return;
+            }
+
+            ticketService.venderTicket(pasajero, vehiculo, LocalDate.now());
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    static void verEstadisticas() {
+        System.out.println("\n** Estadisticas del Sistema **");
+        System.out.println("1. Total recaudado");
+        System.out.println("2. Pasajeros por tipo");
+        System.out.println("3. Vehiculo con mas tickets vendidos");
+        System.out.print("Seleccione una opcion: ");
+        try {
+            int opcion = Integer.parseInt(consola.nextLine());
+            switch (opcion) {
+                case 1: mostrarTotalRecaudado(); break;
+                case 2: mostrarPasajerosPorTipo(); break;
+                case 3: mostrarVehiculoTop(); break;
+                default: System.out.println("Opcion no valida.");
+            }
+        } catch (InputMismatchException e) {
+            consola.nextLine();
+            System.out.println("Error: debe ingresar un numero valido.");
+        }
+    }
+
+    static void mostrarTotalRecaudado() {
+        double total = ticketService.calcularTotalRecaudado();
+        System.out.println("Total recaudado: $" + total);
+    }
+
+    static void mostrarPasajerosPorTipo() {
+        ticketService.contarPasajerosPorTipo().forEach((tipo, cantidad) ->
+            System.out.println(tipo + ": " + cantidad + " pasajeros"));
+    }
+
+    static void mostrarVehiculoTop() {
+        Vehiculo top = ticketService.obtenerVehiculoTop();
+        if (top != null) {
+            top.imprimirDetalle();
+        } else {
+            System.out.println("No hay tickets registrados aun.");
+        }
+    }
 }
